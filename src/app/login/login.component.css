@@ -4,21 +4,21 @@ img {
   width: 90%;
 }
 
-.card {
+.logpic {
   transition: 0.5s;
   cursor: pointer;
   /* height: 50%; */
-  width: 30%;
+  width: 80%;
 }
 
-.card:hover {
+.logpic:hover {
   display: inline-block;
   transform: scale(1.05);
   box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.3);
 }
 
-.card::before,
-.card::after {
+.logpic::before,
+.logpic::after {
   position: absolute;
   top: 0;
   right: 0;
@@ -30,20 +30,27 @@ img {
   content: "";
   pointer-events: none;
 }
-.card::before {
+.logpic::before {
   transform-origin: left top;
 }
-.card::after {
+.logpic::after {
   transform-origin: right bottom;
 }
-.card:hover::before,
-.card:hover::after,
-.card:focus::before,
-.card:focus::after {
+.logpic:hover::before,
+.logpic:hover::after,
+.logpic:focus::before,
+.logpic:focus::after {
   transform: scale3d(1, 1, 1);
 }
 
 .bgg {
   margin-left: 25%;
   border-radius: 12px solid gray;
+}
+.main {
+  width: 100%;
+  height: 700px;
+  background-image: url("../../assets/link-hoang-UoqAR2pOxMo-unsplash-min.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
 }
