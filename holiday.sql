@@ -25,8 +25,6 @@ CREATE TABLE requests(
                         --- Dumping table for employees ---
 --- -------------------------------------------------------------------------------------------- ---
 
-INSERT INTO employee(employee_firstName, employee_lastName, employee_phoneNumber, employee_email, employee_address, employee_role, employee_dev_level, employee_hire_date, employee_onLeave, employee_gender, employee_status) values('Isaac', 'Agyen', '055555555', 'ike@gmail.com', 'pillar 2', 'developer', 'intermediate', '2019-08-08', true, 'male', 'active');
-
 INSERT INTO request_status(req_status) VALUES ('PENDING');
 INSERT INTO request_status(req_status) VALUES ('DECLINED');
 INSERT INTO request_status(req_status) VALUES ('APPROVED');
