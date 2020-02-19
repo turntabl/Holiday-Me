@@ -44,7 +44,7 @@ h5 {
   margin-top: 5%;
   margin-left: 10%;
 }
-.sbut {
+.smallbut {
   margin-top: -7%;
   margin-left: 77%;
 }
@@ -69,4 +69,13 @@ table {
 }
 .filterbox {
   width: 80%;
+}
+
+.btn-lemon {
+  background-color: rgb(237, 252, 21);
+  border-color: rgb(237, 252, 21);
+}
+
+.btnStatus {
+  width: 100%;
 }

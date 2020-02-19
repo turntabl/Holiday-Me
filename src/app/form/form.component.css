@@ -1,0 +1,26 @@
+.side {
+  box-shadow: 0 5px 5px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+  height: 7%;
+}
+
+h5 {
+  color: rgb(247, 246, 242);
+}
+.row > h2 {
+  margin-left: 53%;
+  font-weight: bolder;
+}
+.heading {
+  margin-top: 5%;
+  margin-right: 25%;
+}
+input {
+  width: 100px;
+}
+.formshift {
+  margin-left: 41%;
+}
+button {
+  margin-left: 45.5%;
+  margin-top: 3%;
+}

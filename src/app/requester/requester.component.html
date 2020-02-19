@@ -25,7 +25,7 @@
     </div>
   </div>
 
-  <div class="col-4 sbut">
+  <div class="col-4 smallbut">
     <div class="bg-white p-2 rounded shadow-sm h-100">
       Bill Ali
       <button class="btn btn-success btn-circle m-1">
@@ -40,7 +40,7 @@
 <div class="tabl">
   <mat-form-field class="filterbox">
     <mat-label>Filter</mat-label>
-    <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium" />
+    <input matInput (keyup)="applyFilter($event)" placeholder="Ex. day" />
   </mat-form-field>
 
   <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
@@ -50,22 +50,29 @@
       <td mat-cell *matCellDef="let element">{{ element.position }}</td>
     </ng-container>
 
-    <!-- startDate Column -->
+    <!-- Start Date Column -->
     <ng-container matColumnDef="startDate">
       <th mat-header-cell *matHeaderCellDef>Start Date</th>
       <td mat-cell *matCellDef="let element">{{ element.startDate }}</td>
     </ng-container>
 
-    <!-- reportDate Column -->
+    <!-- Reporting Date Column -->
     <ng-container matColumnDef="reportDate">
       <th mat-header-cell *matHeaderCellDef>Report Date</th>
       <td mat-cell *matCellDef="let element">{{ element.reportDate }}</td>
     </ng-container>
 
-    <!-- status Column -->
+    <!-- Status Column -->
     <ng-container matColumnDef="status">
       <th mat-header-cell *matHeaderCellDef>Status</th>
-      <td mat-cell *matCellDef="let element">{{ element.status }}</td>
+      <td mat-cell *matCellDef="let element">
+        <button
+          [ngClass]="['btnStatus', 'btn', btnColor(element.status)]"
+          type="button"
+        >
+          {{ element.status }}
+        </button>
+      </td>
     </ng-container>
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
