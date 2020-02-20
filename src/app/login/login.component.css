@@ -1,13 +1,17 @@
-img {
-  margin-left: 38%;
-  margin-top: 50px;
-  height: 150px;
-  width: 15%;
+.example-button-row button,
+.example-button-row a {
+  margin-right: 8px;
 }
-#click{
+
+img {
+  margin-left: 40%;
+  margin-top: 80px;
+  height: 130px;
+  width: 13%;
+}
+#click {
   margin-left: 43%;
-  margin-top:3%;
-  
+  margin-top: 55px;
 }
 
 .main {
