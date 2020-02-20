@@ -2,17 +2,80 @@
 <div class="side">
   <nav class="navbar fixed-top navbar-dark bg-primary side mb-4">
     <div class="container-fluid">
-      <a class="navbar-brand" href="/requester">
-        <img
-          src="../../assets/logo.png"
-          width="30"
-          height="30"
-          class="d-inline-block align-top"
-          alt=""
-        />
-        Turntabl
-      </a>
+      <img
+        src="../../assets/logo.png"
+        width="30"
+        height="30"
+        class="d-inline-block align-top"
+        alt="logo"
+      />
+      <h5>Turntabl</h5>
     </div>
   </nav>
 </div>
-<router-outlet></router-outlet>
+<div class="row">
+  <div class="col-6 but">
+    <div class="bg-white p-4 rounded shadow-sm h-100 col">
+      <a href="../form">
+        <button class="btn btn-primary btn-circle btn-circle-xl m-1">
+          <i class="far fa-calendar-alt"></i>
+        </button>
+        Make Request
+      </a>
+    </div>
+  </div>
+
+  <div class="col-4 smallbut">
+    <div class="bg-white p-2 rounded shadow-sm h-100">
+      Bill Ali
+      <button class="btn btn-success btn-circle m-1">
+        18
+      </button>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <h2>LOGS</h2>
+</div>
+<div class="tabl">
+  <mat-form-field class="filterbox">
+    <mat-label>Filter</mat-label>
+    <input matInput (keyup)="applyFilter($event)" placeholder="Ex. day" />
+  </mat-form-field>
+
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+    <!-- Position Column -->
+    <ng-container matColumnDef="position">
+      <th mat-header-cell *matHeaderCellDef>No.</th>
+      <td mat-cell *matCellDef="let element">{{ element.position }}</td>
+    </ng-container>
+
+    <!-- Start Date Column -->
+    <ng-container matColumnDef="startDate">
+      <th mat-header-cell *matHeaderCellDef>Start Date</th>
+      <td mat-cell *matCellDef="let element">{{ element.startDate }}</td>
+    </ng-container>
+
+    <!-- Reporting Date Column -->
+    <ng-container matColumnDef="reportDate">
+      <th mat-header-cell *matHeaderCellDef>Report Date</th>
+      <td mat-cell *matCellDef="let element">{{ element.reportDate }}</td>
+    </ng-container>
+
+    <!-- Status Column -->
+    <ng-container matColumnDef="status">
+      <th mat-header-cell *matHeaderCellDef>Status</th>
+      <td mat-cell *matCellDef="let element">
+        <button
+          [ngClass]="['btnStatus', 'btn', btnColor(element.status)]"
+          type="button"
+        >
+          {{ element.status }}
+        </button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  </table>
+</div>
