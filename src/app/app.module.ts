@@ -1,4 +1,5 @@
 import { BrowserModule } from "@angular/platform-browser";
+<<<<<<< HEAD
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from "@angular/core";
 
 import { AppRoutingModule } from "./app-routing.module";
@@ -23,10 +24,24 @@ import { MatButtonModule } from "@angular/material/button";
     FormComponent,
     ApproverComponent
   ],
+=======
+import { NgModule } from "@angular/core";
+import { HttpClientModule, HttpClient } from '@angular/common/http'; 
+import { AppRoutingModule } from "./app-routing.module";
+import { AppComponent } from "./app.component";
+import { LoginComponent } from "./login/login.component";
+import { RequesterComponent } from "./requester/requester.component";
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import {MatButtonModule} from '@angular/material/button';
+
+@NgModule({
+  declarations: [AppComponent, LoginComponent, RequesterComponent],
+>>>>>>> master
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+<<<<<<< HEAD
     MatTableModule,
     MatFormFieldModule,
     MatInputModule,
@@ -37,6 +52,10 @@ import { MatButtonModule } from "@angular/material/button";
     MatNativeDateModule,
     MatButtonModule
     // NgxAaaDatepickerModule
+=======
+    HttpClientModule,
+    MatButtonModule
+>>>>>>> master
   ],
   providers: [],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
