@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import {MatButtonModule} from '@angular/material/button';
 import { OpenidService } from '../service/openid.service';
 import { ActivatedRoute } from '@angular/router';
 
