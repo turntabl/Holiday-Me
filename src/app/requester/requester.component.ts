@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { MatTableDataSource } from "@angular/material";
 import { ActivatedRoute } from '@angular/router';
+import { OpenidService } from '../service/openid.service';
 
 export interface PeriodicElement {
   startDate: string;
@@ -68,12 +69,15 @@ const ELEMENT_DATA: PeriodicElement[] = [
   styleUrls: ["./requester.component.css"]
 })
 export class RequesterComponent implements OnInit {
-  constructor( private activatedRoute: ActivatedRoute) {}
+  constructor( private openId: OpenidService,private activatedRoute: ActivatedRoute) {}
 
   ngOnInit() {
     this.activatedRoute.queryParamMap.subscribe(queryParam => {
       // this.authenticationCode = queryParam.get("code");
       console.log("********** insidopenIde auth", queryParam.get("code"));
+      this.openId.postAuthenticationCodForAccessAndIdToken(queryParam.get("code")).subscribe(response => {
+        console.log("token",response)
+      })
      
       // this.oidService._postAuthCodForAccessAndIdToken(this._authCode);
       // this.openId.postAuthenticationCodForAccessAndIdToken(this.authenticationCode);
