@@ -14,10 +14,11 @@
 
   <div class="col-4 smallbut">
     <div class="bg-white p-2 rounded shadow-sm h-100">
-      Bill Ali
+      <!-- Bill Ali -->Holidays remaining
       <button class="btn btn-success btn-circle m-1">
         18
       </button>
+      Holidays remaining
     </div>
   </div>
 </div>
@@ -31,12 +32,6 @@
   </mat-form-field>
 
   <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
-    <!-- Position Column -->
-    <ng-container matColumnDef="position">
-      <th mat-header-cell *matHeaderCellDef>No.</th>
-      <td mat-cell *matCellDef="let element">{{ element.position }}</td>
-    </ng-container>
-
     <!-- Start Date Column -->
     <ng-container matColumnDef="startDate">
       <th mat-header-cell *matHeaderCellDef>Start Date</th>
