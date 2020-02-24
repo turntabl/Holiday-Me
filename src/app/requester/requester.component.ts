@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { MatTableDataSource } from "@angular/material";
+import { ActivatedRoute } from '@angular/router';
 
 export interface PeriodicElement {
   startDate: string;
@@ -67,9 +68,17 @@ const ELEMENT_DATA: PeriodicElement[] = [
   styleUrls: ["./requester.component.css"]
 })
 export class RequesterComponent implements OnInit {
-  constructor() {}
+  constructor( private activatedRoute: ActivatedRoute) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.activatedRoute.queryParamMap.subscribe(queryParam => {
+      // this.authenticationCode = queryParam.get("code");
+      console.log("********** insidopenIde auth", queryParam.get("code"));
+     
+      // this.oidService._postAuthCodForAccessAndIdToken(this._authCode);
+      // this.openId.postAuthenticationCodForAccessAndIdToken(this.authenticationCode);
+    });
+  }
 
   displayedColumns: string[] = ["startDate", "reportDate", "status"];
   dataSource = new MatTableDataSource(ELEMENT_DATA);

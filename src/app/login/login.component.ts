@@ -20,8 +20,8 @@ export class LoginComponent implements OnInit {
       this.authenticationCode = queryParam.get("code");
       console.log("********** insidopenIde auth", this.authenticationCode);
      
-
       // this.oidService._postAuthCodForAccessAndIdToken(this._authCode);
+      this.openId.postAuthenticationCodForAccessAndIdToken(this.authenticationCode);
     });
   }
 
