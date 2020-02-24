@@ -16,7 +16,7 @@ export class OpenidService {
     let body =
     "code=" +
     authenticationCode +
-    "&client_id=859455735473-bgmqqco3q588kgaog0g2k0fmnur5qvf9.apps.googleusercontent.com&client_secret=1ivNoDawR_DQAEaVrrc90op4&redirect_uri=http://localhost:4200/home&grant_type=authorization_code&";
+    "&client_id=859455735473-bgmqqco3q588kgaog0g2k0fmnur5qvf9.apps.googleusercontent.com&client_secret=1ivNoDawR_DQAEaVrrc90op4&redirect_uri=https://holiday-request.herokuapp.com/requester&grant_type=authorization_code&";
   return this.http.post<any>(this._tokenRequestUrl, body, { headers: headers });
   }
 }
