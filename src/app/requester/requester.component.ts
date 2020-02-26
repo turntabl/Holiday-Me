@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { MatTableDataSource } from "@angular/material";
 import { ActivatedRoute } from '@angular/router';
 import { OpenidService } from '../service/openid.service';
+import { validateHorizontalPosition } from '@angular/cdk/overlay';
 
 export interface PeriodicElement {
   startDate: string;
@@ -80,13 +81,18 @@ export class RequesterComponent implements OnInit {
       this.openId.postAuthenticationCodForAccessAndIdToken(queryParam.get("code")).subscribe(response => {
         console.log("token",response)
         this.idToken = response.id_token
-
-        this.openId.postValidateTokeId(this.idToken).subscribe(response => {
-          console.log(response)
-        })
-      })
-     
+        this.val
+        // this.openId.postValidateTokeId(this.idToken).subscribe(response => {
+        //   console.log(response)
+        // })
+      }) 
     });
+  }
+
+  val(){
+    this.openId.postValidateTokeId(this.idToken).subscribe(response => {
+      console.log(response)
+    })
   }
 
   displayedColumns: string[] = ["startDate", "reportDate", "status"];
