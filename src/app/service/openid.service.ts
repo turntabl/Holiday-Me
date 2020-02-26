@@ -22,9 +22,12 @@ export class OpenidService {
   }
 
   postValidateTokeId(access_token: string): Observable<any>{
-    let headers = new HttpHeaders({
+    /* let headers = new HttpHeaders({
       "access-token": access_token
     });
+    */
+   let headers = new Headers();
+   headers.append("access_token", access_token);
   return this.http.post<any>(this.validateTokenUrl, {headers: headers});
   }
   
