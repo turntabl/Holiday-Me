@@ -70,21 +70,21 @@ const ELEMENT_DATA: PeriodicElement[] = [
 })
 export class RequesterComponent implements OnInit {
   idToken;
+  authenticationCode;
 
   constructor( private openId: OpenidService,private activatedRoute: ActivatedRoute) {}
 
   ngOnInit() {
     this.activatedRoute.queryParamMap.subscribe(queryParam => {
-      // this.authenticationCode = queryParam.get("code");
+      this.authenticationCode = queryParam.get("code");
       console.log("********** insidopenIde auth", queryParam.get("code"));
-      this.openId.postAuthenticationCodForAccessAndIdToken(queryParam.get("code")).subscribe(response => {
-        console.log("token",response)
-        this.idToken = response.id_token
-
-        this.openId.postValidateTokeId(this.idToken).subscribe(response => {
-          console.log(response)
-        })
-      })  
+      localStorage.setItem("authenticationCode", this.authenticationCode)
+    }); 
+    this.authenticateAndValidate()
+  }
+  authenticateAndValidate(){
+    this.openId.postValidateTokeId(this.idToken).subscribe(response => {
+          console.log(response)    
     });
   }
 
