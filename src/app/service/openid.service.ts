@@ -21,9 +21,9 @@ export class OpenidService {
   return this.http.post<any>(this._tokenRequestUrl, body, { headers: headers });
   }
 
-  postValidateTokeId(access_token: String): Observable<any>{
+  postValidateTokeId(access_token: string): Observable<any>{
     let headers = new HttpHeaders({
-      "access-token": access_token.toString()
+      "access-token": access_token
     });
   return this.http.post<any>(this.validateTokenUrl, {headers: headers});
   }
