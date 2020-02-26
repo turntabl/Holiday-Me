@@ -28,5 +28,7 @@ export class OpenidService {
   return this.http.post<any>(this.validateTokenUrl, {headers: headers});
   }
   
+  getUserDetails(): Observable<any>{
+return this.http.get<any>(this.validateTokenUrl) 
 }
-
+}
