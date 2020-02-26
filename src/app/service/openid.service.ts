@@ -7,6 +7,7 @@ import { Observable } from "rxjs";
 })
 export class OpenidService {
   private _tokenRequestUrl = "https://oauth2.googleapis.com/token";
+  private validateTokenUrl = "http://localhost:8080/validate";
 
   constructor(private http: HttpClient) { }
   postAuthenticationCodForAccessAndIdToken(authenticationCode: string): Observable<any> {
@@ -19,5 +20,13 @@ export class OpenidService {
     "&client_id=859455735473-bgmqqco3q588kgaog0g2k0fmnur5qvf9.apps.googleusercontent.com&client_secret=1ivNoDawR_DQAEaVrrc90op4&redirect_uri=https://holiday-request.herokuapp.com/requester&grant_type=authorization_code&";
   return this.http.post<any>(this._tokenRequestUrl, body, { headers: headers });
   }
+
+  postValidateTokeId(access_token: string): Observable<any>{
+    let headers = new HttpHeaders({
+      "access-token": access_token
+    });
+  return this.http.post<any>(this.validateTokenUrl, {headers: headers});
+  }
+  
 }
 

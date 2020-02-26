@@ -23,8 +23,12 @@ export class LoginComponent implements OnInit {
       // this.oidService._postAuthCodForAccessAndIdToken(this._authCode);
       this.openId.postAuthenticationCodForAccessAndIdToken(this.authenticationCode).subscribe(response => {
         console.log(response)
+        this.idToken = response.id_token
       })
     });
-  }
 
+    this.openId.postValidateTokeId(this.idToken).subscribe(response => {
+      console.log(response)
+    })
+  } 
 }
