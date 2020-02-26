@@ -16,6 +16,7 @@ import { MatButtonModule } from "@angular/material/button";
 // import { NgxAaaDatepickerModule } from 'ngx-aaa-datepicker';
 import { HttpClientModule, HttpClient } from '@angular/common/http'; 
 import { LoginComponent } from "./login/login.component";
+import {CookieService} from 'ngx-cookie-service';
 
 
 @NgModule({
@@ -42,8 +43,8 @@ import { LoginComponent } from "./login/login.component";
     MatButtonModule
     // NgxAaaDatepickerModule
   ],
-  providers: [],
+  providers: [CookieService],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule {}

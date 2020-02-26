@@ -84,6 +84,27 @@ export class RequesterComponent implements OnInit {
         //this.val()
         this.openId.postValidateTokeId(this.idToken).subscribe(res => {
           console.log(res)
+          localStorage.setItem('userEmail', res.decoded_token.email)
+          localStorage.setItem('l_name', res.decoded_token.family_name)
+          localStorage.setItem('f_name', res.decoded_token.given_name)
+
+          this.openId.checkEmployeePresence(res.decoded_token.email).subscribe(response  => {
+              if (response.response.length == 0) {
+                let requestData = {
+                  "employee_email": localStorage.getItem('userEmail'),
+                  "employee_firstname": localStorage.getItem('f_name'),
+                  "employee_lastname": localStorage.getItem('l_name'),
+                }
+                console.log("This user is not found..entring data")
+
+                this.openId.addEmployee(requestData).subscribe(response_  => {
+                  console.log(response_); 
+                })
+              }
+              else {
+                console.log("user found", response)
+              }
+          })
         })
       }) 
     });
