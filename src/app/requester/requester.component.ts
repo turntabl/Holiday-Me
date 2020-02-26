@@ -81,10 +81,10 @@ export class RequesterComponent implements OnInit {
         console.log("token",response)
         this.idToken = response.id_token
 
-      })
-      this.openId.postValidateTokeId(this.idToken).subscribe(response => {
-        console.log(response)
-      })
+        this.openId.postValidateTokeId(this.idToken).subscribe(response => {
+          console.log(response)
+        })
+      })  
     });
   }
 
