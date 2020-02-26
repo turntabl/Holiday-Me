@@ -81,7 +81,7 @@ export class RequesterComponent implements OnInit {
       this.openId.postAuthenticationCodForAccessAndIdToken(queryParam.get("code")).subscribe(response => {
         console.log("token",response)
         this.idToken = response.id_token
-        this.val
+        this.val()
         // this.openId.postValidateTokeId(this.idToken).subscribe(response => {
         //   console.log(response)
         // })
