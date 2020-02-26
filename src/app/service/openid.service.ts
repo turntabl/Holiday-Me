@@ -26,7 +26,7 @@ export class OpenidService {
    let head = headers.append("access-token", access_token);
    console.log("acess, ", access_token);
    console.log("hhhhh ... ", head.get("access-token"));
-  return this.http.post<any>(this.validateTokenUrl, {headers: head});
+  return this.http.post<any>(this.validateTokenUrl, new Object(), {headers: head});
   }
   
   getUserDetails(): Observable<any>{
