@@ -1,4 +1,4 @@
-import { Component, OnInit, EventEmitter } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import { FormGroup, FormControl, FormBuilder } from "@angular/forms";
 import { MatDatepickerInputEvent } from "@angular/material/datepicker";
 
@@ -17,6 +17,8 @@ export class FormComponent implements OnInit {
   addEvent(type: string, event: MatDatepickerInputEvent<Date>) {
     if (type === "start") {
       this.regForm.get("startdate").setValue(event.value);
+      start: Date = this.regForm.get("startdate").value;
+      report: Date = this.regForm.get("startdate").value;
       console.log(
         `${type}: ${event.value} -> ${this.regForm.get("startdate").value}`
       );
@@ -45,7 +47,7 @@ export class FormComponent implements OnInit {
   time_range = new FormGroup({});
   private regForm: FormGroup;
 
-  constructor(private formBuilder: FormBuilder) {
+  constructor(formBuilder: FormBuilder) {
     const currentYear = new Date().getFullYear();
     this.startMinDate = new Date();
     this.startMaxDate = new Date(currentYear, 11, 31);
