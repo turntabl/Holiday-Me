@@ -26,5 +26,9 @@ export class LoginComponent implements OnInit {
         this.idToken = response.id_token
       })
     });
+
+    // this.openId.postValidateTokeId(this.idToken).subscribe(response => {
+    //   console.log(response)
+    // })
   } 
 }

@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Observable } from "rxjs";
-import { CookieService } from "ngx-cookie-service";
 
 @Injectable({
   providedIn: 'root'
@@ -9,10 +8,13 @@ import { CookieService } from "ngx-cookie-service";
 export class OpenidService {
   private _tokenRequestUrl = "https://oauth2.googleapis.com/token";
   private validateTokenUrl = "http://localhost:8080/validate";
+<<<<<<< HEAD
   private addUnavailableEmployeeUrl = "http://localhost:8080/addemployee"
   private checkEmail = "http://localhost:8080/verifymail/";
   private getRequestsForEmployeeUrl = "http://localhost:8080/api/v1/request/requester/"
 
+=======
+>>>>>>> parent of a346377... oidc
 
   constructor(private http: HttpClient) { }
   postAuthenticationCodForAccessAndIdToken(authenticationCode: string): Observable<any> {
@@ -37,6 +39,7 @@ export class OpenidService {
   getUserDetails(): Observable<any>{
 return this.http.get<any>(this.validateTokenUrl) 
 }
+<<<<<<< HEAD
 
 
 addEmployee(requestBody: any): Observable<any> {
@@ -55,4 +58,6 @@ checkEmployeePresence(employeeEmail:String):Observable<any> {
 getAllRequestForEmployee(employee_id: Number):Observable<any>{
   return this.http.get(this.getRequestsForEmployeeUrl + employee_id)
   }
+=======
+>>>>>>> parent of a346377... oidc
 }
