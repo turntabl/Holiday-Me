@@ -44,14 +44,14 @@
     </ng-container>
 
     <!-- Status Column -->
-    <ng-container matColumnDef="status">
+    <ng-container matColumnDef="requestStatus">
       <th mat-header-cell *matHeaderCellDef>Status</th>
       <td mat-cell *matCellDef="let element">
         <button
-          [ngClass]="['btnStatus', 'btn', btnColor(element.status)]"
+          [ngClass]="['btnStatus', 'btn', btnColor(element.requestStatus)]"
           type="button"
         >
-          {{ element.status }}
+          {{ element.requestStatus }}
         </button>
       </td>
     </ng-container>
