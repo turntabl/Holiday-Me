@@ -116,7 +116,7 @@ export class RequesterComponent implements OnInit {
     });
   }
 
-  displayedColumns: string[] = ["startDate", "reportDate", "status"];
+  displayedColumns: string[] = ["startDate", "reportDate", "requestStatus"];
   dataSource = new MatTableDataSource(ELEMENT_DATA);
 
   btnColor(requestStatus: string) {
