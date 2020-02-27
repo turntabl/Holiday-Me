@@ -71,6 +71,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
 })
 export class RequesterComponent implements OnInit {
   idToken;
+  userName: String;
 
   constructor(
     private openId: OpenidService,
@@ -106,9 +107,12 @@ export class RequesterComponent implements OnInit {
 
                   this.openId.addEmployee(requestData).subscribe(response_ => {
                     console.log(response_);
+                    this.userName = localStorage.getItem("f_name") + " " + localStorage.getItem("l_name")
                   });
+
                 } else {
                   console.log("user found", response);
+                  this.userName = localStorage.getItem("f_name") + " " + localStorage.getItem("l_name")
                 }
               });
           });
