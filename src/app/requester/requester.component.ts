@@ -102,11 +102,7 @@ export class RequesterComponent implements OnInit {
                     employee_firstname: localStorage.getItem("f_name"),
                     employee_lastname: localStorage.getItem("l_name")
                   };
-<<<<<<< HEAD
                   console.log("This user is not found..entring data");
-=======
-                  console.log("This user is not found..entering data");
->>>>>>> master
 
                   this.openId.addEmployee(requestData).subscribe(response_ => {
                     console.log(response_);
@@ -120,17 +116,7 @@ export class RequesterComponent implements OnInit {
     });
   }
 
-<<<<<<< HEAD
   displayedColumns: string[] = ["startDate", "reportDate", "status"];
-=======
-  // val(){
-  //   this.openId.postValidateTokeId(this.idToken).subscribe(response => {
-  //     console.log(response)
-  //   })
-  // }
-
-  displayedColumns: string[] = ["startDate", "reportDate", "requestStatus"];
->>>>>>> master
   dataSource = new MatTableDataSource(ELEMENT_DATA);
 
   btnColor(requestStatus: string) {
