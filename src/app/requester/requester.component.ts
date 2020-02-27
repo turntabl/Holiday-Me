@@ -81,7 +81,6 @@ export class RequesterComponent implements OnInit {
     this.activatedRoute.queryParamMap.subscribe(queryParam => {
       // this.authenticationCode = queryParam.get("code");
       console.log("********** insidopenIde auth", queryParam.get("code"));
-<<<<<<< HEAD
       this.openId
         .postAuthenticationCodForAccessAndIdToken(queryParam.get("code"))
         .subscribe(response => {
@@ -114,16 +113,6 @@ export class RequesterComponent implements OnInit {
               });
           });
         });
-=======
-      this.openId.postAuthenticationCodForAccessAndIdToken(queryParam.get("code")).subscribe(response => {
-        console.log("token",response)
-        this.idToken = response.id_token
-        //this.val()
-        this.openId.postValidateTokeId(this.idToken).subscribe(res => {
-          console.log(res)
-        })
-      }) 
->>>>>>> parent of a346377... oidc
     });
   }
 
