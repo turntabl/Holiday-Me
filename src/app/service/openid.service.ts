@@ -51,7 +51,7 @@ checkEmployeePresence(employeeEmail:String):Observable<any> {
   return this.http.get(this.checkEmail + employeeEmail)
 }
 
-getAllRequestForEmployee(employee_id: Number):Observable<any>{
+getAllRequestForEmployee(employee_id: any):Observable<any>{
   return this.http.get(this.getRequestsForEmployeeUrl + employee_id)
   }
 }
