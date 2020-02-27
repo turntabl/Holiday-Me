@@ -20,8 +20,8 @@ app.use(
 app.use(express.static(__dirname + "/dist/Holiday-Me"));
 
 app.get("/*", function(req, res) {
-  res.cookie("backend_url", process.env.REQUESTS_SERVICE);
   res.sendFile(path.join(__dirname + "/dist/Holiday-Me/index.html"));
+  res.cookie("backend_url", process.env.REQUESTS_SERVICE);
 });
 
 app.listen(process.env.PORT || 8080);
