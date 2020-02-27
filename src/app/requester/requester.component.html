@@ -34,13 +34,13 @@
     <!-- Start Date Column -->
     <ng-container matColumnDef="startDate">
       <th mat-header-cell *matHeaderCellDef>Start Date</th>
-      <td mat-cell *matCellDef="let element">{{ element.startDate }}</td>
+      <td mat-cell *matCellDef="let element">{{ element.request_start_date }}</td>
     </ng-container>
 
     <!-- Reporting Date Column -->
     <ng-container matColumnDef="reportDate">
       <th mat-header-cell *matHeaderCellDef>Report Date</th>
-      <td mat-cell *matCellDef="let element">{{ element.reportDate }}</td>
+      <td mat-cell *matCellDef="let element">{{ element.request_report_date }}</td>
     </ng-container>
 
     <!-- Status Column -->
@@ -51,7 +51,7 @@
           [ngClass]="['btnStatus', 'btn', btnColor(element.requestStatus)]"
           type="button"
         >
-          {{ element.requestStatus }}
+          {{ element.req_status }}
         </button>
       </td>
     </ng-container>

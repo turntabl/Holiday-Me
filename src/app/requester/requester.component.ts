@@ -5,64 +5,11 @@ import { OpenidService } from "../service/openid.service";
 import { validateHorizontalPosition } from "@angular/cdk/overlay";
 
 export interface PeriodicElement {
-  startDate: string;
-
-  reportDate: string;
-  requestStatus: string;
+  request_start_date: string;
+  request_report_date: string;
+  req_status: string;
 }
 
-const ELEMENT_DATA: PeriodicElement[] = [
-  {
-    startDate: "Tuesday, 24th February, 2020",
-    reportDate: "Monday, 5th March, 2020",
-    requestStatus: "Pending"
-  },
-  {
-    startDate: "Monday, 17th February, 2020",
-    reportDate: "Friday, 21st February, 2020",
-    requestStatus: "Pending"
-  },
-  {
-    startDate: "Tuesday, 11th January, 2020",
-    reportDate: "Wednesday, 13th January, 2020",
-    requestStatus: "Approved"
-  },
-  {
-    startDate: "Wednesday, 13th December, 2019",
-    reportDate: "Friday, 15th December, 2019",
-    requestStatus: "Approved"
-  },
-  {
-    startDate: "Thursday, 1st September, 2019",
-    reportDate: "Wednesday, 7th September, 2019",
-    requestStatus: "Declined"
-  },
-  {
-    startDate: "Friday, 25th August, 2019",
-    reportDate: "Thursday, 1st September, 2019",
-    requestStatus: "Declined"
-  },
-  {
-    startDate: "Thursday, 1st August, 2019",
-    reportDate: "Monday, 5th August, 2019",
-    requestStatus: "Approved"
-  },
-  {
-    startDate: "Tuesday, 21st July, 2019",
-    reportDate: "Wednesday, 22nd July, 2019",
-    requestStatus: "Approved"
-  },
-  {
-    startDate: "Friday, 10th July, 2019",
-    reportDate: "Monday, 13th July, 2019",
-    requestStatus: "Declined"
-  },
-  {
-    startDate: "Tuesday, 21st June, 2019",
-    reportDate: "Tuesday, 30th June, 2019",
-    requestStatus: "Approved"
-  }
-];
 
 @Component({
   selector: "app-requester",
@@ -70,6 +17,9 @@ const ELEMENT_DATA: PeriodicElement[] = [
   styleUrls: ["./requester.component.css"]
 })
 export class RequesterComponent implements OnInit {
+  ELEMENT_DATA: PeriodicElement[] = [
+  ];
+  
   idToken;
   userName: String;
 
@@ -113,6 +63,9 @@ export class RequesterComponent implements OnInit {
                 } else {
                   console.log("user found", response);
                   this.userName = localStorage.getItem("f_name") + " " + localStorage.getItem("l_name")
+                  this.openId.getAllRequestForEmployee(response[0].employee_id).subscribe(data => {
+                    this.ELEMENT_DATA = data
+                  })
                 }
               });
           });
@@ -120,8 +73,8 @@ export class RequesterComponent implements OnInit {
     });
   }
 
-  displayedColumns: string[] = ["startDate", "reportDate", "requestStatus"];
-  dataSource = new MatTableDataSource(ELEMENT_DATA);
+  displayedColumns: string[] = ["request_start_date", "request_report_date", "req_status"];
+  dataSource = new MatTableDataSource(this.ELEMENT_DATA);
 
   btnColor(requestStatus: string) {
     if (requestStatus === "Declined") {
