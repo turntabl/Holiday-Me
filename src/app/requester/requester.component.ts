@@ -17,7 +17,16 @@ export interface PeriodicElement {
 })
 
 export class RequesterComponent implements OnInit {
-  ELEMENT_DATA: PeriodicElement[] = [];
+  ELEMENT_DATA: PeriodicElement[] = [
+  ];
+
+  fakeData: PeriodicElement[] = [
+    {
+      req_status: "PENDING",
+      request_report_date: "aksdnlasd",
+      request_start_date: "asdasda"
+    }
+  ];
   
   idToken;
   userName: String;
@@ -63,7 +72,9 @@ export class RequesterComponent implements OnInit {
                   console.log("user found", response);
                   this.userName = localStorage.getItem("f_name") + " " + localStorage.getItem("l_name")
                   this.openId.getAllRequestForEmployee(response.response[0].employee_id).subscribe(data => {
-                    this.ELEMENT_DATA = data
+                    this.ELEMENT_DATA = this.fakeData
+                    console.log("emploeyee_data",data);
+                    
                   })
                 }
               });
