@@ -23,6 +23,10 @@ let ELEMENT_DATA: PeriodicElement[] = [
 })
 
 export class RequesterComponent implements OnInit {
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
 
   idToken;
   userName: String;
@@ -90,8 +94,8 @@ export class RequesterComponent implements OnInit {
       return "btn-lemon";
     }
   }
-  applyFilter(event: Event) {
-    const filterValue = (event.target as HTMLInputElement).value;
-    this.dataSource.filter = filterValue.trim().toLowerCase();
-  }
+  // applyFilter(event: Event) {
+  //   const filterValue = (event.target as HTMLInputElement).value;
+  //   this.dataSource.filter = filterValue.trim().toLowerCase();
+  // }
 }
