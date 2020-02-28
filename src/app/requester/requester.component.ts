@@ -10,15 +10,14 @@ export interface PeriodicElement {
   req_status: string;
 }
 
-
 @Component({
   selector: "app-requester",
   templateUrl: "./requester.component.html",
   styleUrls: ["./requester.component.css"]
 })
+
 export class RequesterComponent implements OnInit {
-  ELEMENT_DATA: PeriodicElement[] = [
-  ];
+  ELEMENT_DATA: PeriodicElement[] = [];
   
   idToken;
   userName: String;
@@ -63,7 +62,7 @@ export class RequesterComponent implements OnInit {
                 } else {
                   console.log("user found", response);
                   this.userName = localStorage.getItem("f_name") + " " + localStorage.getItem("l_name")
-                  this.openId.getAllRequestForEmployee(response[0].employee_id).subscribe(data => {
+                  this.openId.getAllRequestForEmployee(response.response[0].employee_id).subscribe(data => {
                     this.ELEMENT_DATA = data
                   })
                 }
