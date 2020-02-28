@@ -26,7 +26,7 @@ export class RequesterComponent implements OnInit {
   
   idToken;
   userName: String;
-  ELEMENT_DATA: PeriodicElement[] = [];
+  ELEMENT_DATA: PeriodicElement[];
 
   constructor(
     private openId: OpenidService,
@@ -73,8 +73,10 @@ export class RequesterComponent implements OnInit {
                 } else {
                   console.log("user found", response);
                   this.userName = localStorage.getItem("f_name") + " " + localStorage.getItem("l_name")
-                  this.openId.getAllRequestForEmployee(response.response[0].employee_id).subscribe(data => {
-                    this.ELEMENT_DATA = data
+                  this.openId.getAllRequestForEmployee(response.response[0].employee_id).subscribe(
+                     data => {this.dataSource = new MatTableDataSource(data)
+                    // data => {
+                    // this.ELEMENT_DATA = data
                     console.log("emploeyee_data",data);                   
                   })
                 }
@@ -85,8 +87,7 @@ export class RequesterComponent implements OnInit {
   }
 
   displayedColumns: string[] = ["request_start_date", "request_report_date", "req_status"];
-  dataSource  
-  // = new MatTableDataSource(this.ELEMENT_DATA);
+  dataSource = new MatTableDataSource(this.ELEMENT_DATA);
 
   btnColor(requestStatus: string) {
     if (requestStatus === "Declined") {
