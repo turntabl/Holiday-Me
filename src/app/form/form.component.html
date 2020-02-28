@@ -25,13 +25,15 @@
   <h2>Book A Time Off</h2>
 </div>
 <div class="container-fluid">
-  <form action="" [formGroup]="time_range" (ngSubmit)="onSubmit()">
+  <form action="" (ngSubmit)="onSubmit()">
     <div class="row formshift">
       <mat-form-field>
         <mat-label>Start date</mat-label>
         <input
           (dateChange)="addEvent('start', $event)"
           matInput
+          [(ngModel)]="requestDetails.startDate"
+          [ngModelOptions]="{ standalone: true }"
           [matDatepickerFilter]="startFilter"
           [min]="startMinDate"
           [max]="startMaxDate"
@@ -55,6 +57,8 @@
         <input
           (dateChange)="addEvent('report', $event)"
           matInput
+          [(ngModel)]="requestDetails.reportDate"
+          [ngModelOptions]="{ standalone: true }"
           [matDatepickerFilter]="reportFilter"
           [min]="reportMinDate"
           [max]="reportMaxDate"
@@ -77,6 +81,6 @@
     >
       Submit
     </button> -->
-    <button mat-raised-button color="primary">Submit</button>
+    <button mat-raised-button type="submit" color="primary">Submit</button>
   </form>
 </div>
