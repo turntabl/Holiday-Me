@@ -26,11 +26,7 @@ export class RequesterComponent implements OnInit {
   
   idToken;
   userName: String;
-  ELEMENT_DATA: PeriodicElement[] = [{
-    req_status: "PENDING",
-    request_report_date: "aksdnlasd",
-    request_start_date: "asdasda"
-  }];
+  ELEMENT_DATA: PeriodicElement[] = [];
 
   constructor(
     private openId: OpenidService,
