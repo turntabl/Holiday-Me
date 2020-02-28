@@ -85,7 +85,8 @@ export class RequesterComponent implements OnInit {
   }
 
   displayedColumns: string[] = ["request_start_date", "request_report_date", "req_status"];
-  dataSource = new MatTableDataSource(this.ELEMENT_DATA);
+  dataSource  
+  // = new MatTableDataSource(this.ELEMENT_DATA);
 
   btnColor(requestStatus: string) {
     if (requestStatus === "Declined") {
