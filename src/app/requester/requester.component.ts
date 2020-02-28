@@ -9,13 +9,13 @@ export interface PeriodicElement {
   request_report_date: string;
   req_status: string;
 }
-let ELEMENT_DATA: PeriodicElement[] = [
-  {
-    req_status: "PENDING",
-    request_report_date: "aksdnlasd",
-    request_start_date: "asdasda"
-  }
-];
+//  = [
+//   {
+//     req_status: "PENDING",
+//     request_report_date: "aksdnlasd",
+//     request_start_date: "asdasda"
+//   }
+// ];
 @Component({
   selector: "app-requester",
   templateUrl: "./requester.component.html",
@@ -23,20 +23,22 @@ let ELEMENT_DATA: PeriodicElement[] = [
 })
 
 export class RequesterComponent implements OnInit {
-  applyFilter(event: Event) {
-    const filterValue = (event.target as HTMLInputElement).value;
-    this.dataSource.filter = filterValue.trim().toLowerCase();
-  }
-
+  
   idToken;
   userName: String;
+  ELEMENT_DATA: PeriodicElement[];
 
   constructor(
     private openId: OpenidService,
     private activatedRoute: ActivatedRoute
-  ) {}
+  ) {
+    
+  }
 
   ngOnInit() {
+
+
+
     this.activatedRoute.queryParamMap.subscribe(queryParam => {
       // this.authenticationCode = queryParam.get("code");
       console.log("********** insidopenIde auth", queryParam.get("code"));
@@ -72,7 +74,7 @@ export class RequesterComponent implements OnInit {
                   console.log("user found", response);
                   this.userName = localStorage.getItem("f_name") + " " + localStorage.getItem("l_name")
                   this.openId.getAllRequestForEmployee(response.response[0].employee_id).subscribe(data => {
-                    ELEMENT_DATA = data
+                    this.ELEMENT_DATA = data
                     console.log("emploeyee_data",data);                   
                   })
                 }
@@ -83,7 +85,7 @@ export class RequesterComponent implements OnInit {
   }
 
   displayedColumns: string[] = ["request_start_date", "request_report_date", "req_status"];
-  dataSource = new MatTableDataSource(ELEMENT_DATA);
+  dataSource = new MatTableDataSource(this.ELEMENT_DATA);
 
   btnColor(requestStatus: string) {
     if (requestStatus === "Declined") {
@@ -94,8 +96,8 @@ export class RequesterComponent implements OnInit {
       return "btn-lemon";
     }
   }
-  // applyFilter(event: Event) {
-  //   const filterValue = (event.target as HTMLInputElement).value;
-  //   this.dataSource.filter = filterValue.trim().toLowerCase();
-  // }
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
 }
