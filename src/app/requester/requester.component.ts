@@ -24,8 +24,6 @@ let ELEMENT_DATA: PeriodicElement[] = [
 
 export class RequesterComponent implements OnInit {
 
-
-  
   idToken;
   userName: String;
 
@@ -71,8 +69,7 @@ export class RequesterComponent implements OnInit {
                   this.userName = localStorage.getItem("f_name") + " " + localStorage.getItem("l_name")
                   this.openId.getAllRequestForEmployee(response.response[0].employee_id).subscribe(data => {
                     ELEMENT_DATA = data
-                    console.log("emploeyee_data",data);
-                    
+                    console.log("emploeyee_data",data);                   
                   })
                 }
               });
