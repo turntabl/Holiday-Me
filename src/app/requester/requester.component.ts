@@ -9,7 +9,13 @@ export interface PeriodicElement {
   request_report_date: string;
   req_status: string;
 }
-
+let ELEMENT_DATA: PeriodicElement[] = [
+  {
+    req_status: "PENDING",
+    request_report_date: "aksdnlasd",
+    request_start_date: "asdasda"
+  }
+];
 @Component({
   selector: "app-requester",
   templateUrl: "./requester.component.html",
@@ -17,16 +23,8 @@ export interface PeriodicElement {
 })
 
 export class RequesterComponent implements OnInit {
-  ELEMENT_DATA: PeriodicElement[] = [
-  ];
 
-  fakeData: PeriodicElement[] = [
-    {
-      req_status: "PENDING",
-      request_report_date: "aksdnlasd",
-      request_start_date: "asdasda"
-    }
-  ];
+
   
   idToken;
   userName: String;
@@ -72,7 +70,7 @@ export class RequesterComponent implements OnInit {
                   console.log("user found", response);
                   this.userName = localStorage.getItem("f_name") + " " + localStorage.getItem("l_name")
                   this.openId.getAllRequestForEmployee(response.response[0].employee_id).subscribe(data => {
-                    this.ELEMENT_DATA = this.fakeData
+                    ELEMENT_DATA = data
                     console.log("emploeyee_data",data);
                     
                   })
@@ -84,7 +82,7 @@ export class RequesterComponent implements OnInit {
   }
 
   displayedColumns: string[] = ["request_start_date", "request_report_date", "req_status"];
-  dataSource = new MatTableDataSource(this.ELEMENT_DATA);
+  dataSource = new MatTableDataSource(ELEMENT_DATA);
 
   btnColor(requestStatus: string) {
     if (requestStatus === "Declined") {
