@@ -81,6 +81,18 @@
     >
       Submit
     </button> -->
+    <div class="row formshift">
+      <input
+        type="text"
+        name="daterangeInput"
+        daterangepicker
+        [options]="options"
+        (selected)="selectedDate($event)"
+        (cancelDaterangepicker)="calendarCanceled($event)"
+        (applyDaterangepicker)="calendarApplied($event)"
+      />`
+    </div>
+
     <button mat-raised-button type="submit" color="primary">Submit</button>
   </form>
 </div>
