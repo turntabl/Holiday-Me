@@ -30,7 +30,7 @@ export class OpenidService {
   postValidateTokeId(access_token: string): Observable<any>{
     let headers = new HttpHeaders(); 
    let head = headers.append("access-token", access_token);
-   console.log("acess, ", access_token);
+  // console.log("acess, ", access_token);
   //  console.log("hhhhh ... ", head.get("access-token"));
   return this.http.post<any>(this.validateTokenUrl, new Object(), {headers: head});
   }
@@ -57,7 +57,7 @@ getAllRequestForEmployee(employee_id: any):Observable<any>{
   return this.http.get(this.getRequestsForEmployeeUrl + employee_id);
   }
 
-makeAholidayRequest(employeInfo: Requester):Observable<any>{
+makeAholidayRequest(employeInfo: any):Observable<any>{
   return this.http.post(this.makeRequestLink, employeInfo);
 }
 }
