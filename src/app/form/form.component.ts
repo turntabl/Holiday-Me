@@ -20,7 +20,7 @@ export class FormComponent implements OnInit {
     if (type === "start") {
       this.regForm.get("request_start_date").setValue(event.value);
       start: Date = this.regForm.get("request_start_date").value;
-      report: Date = this.regForm.get("request_start_date").value;
+     // report: Date = this.regForm.get("request_start_date").value;
       console.log(
         `${type}: ${event.value} -> ${this.regForm.get("request_start_date").value}`
       );
