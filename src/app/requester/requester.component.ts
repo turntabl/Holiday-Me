@@ -9,13 +9,7 @@ export interface PeriodicElement {
   request_report_date: string;
   req_status: string;
 }
-//  = [
-//   {
-//     req_status: "PENDING",
-//     request_report_date: "aksdnlasd",
-//     request_start_date: "asdasda"
-//   }
-// ];
+
 @Component({
   selector: "app-requester",
   templateUrl: "./requester.component.html",
@@ -27,6 +21,7 @@ export class RequesterComponent implements OnInit {
   idToken;
   userName: String;
   ELEMENT_DATA: PeriodicElement[];
+  
 
   constructor(
     private openId: OpenidService,
@@ -36,9 +31,6 @@ export class RequesterComponent implements OnInit {
   }
 
   ngOnInit() {
-
-
-
     this.activatedRoute.queryParamMap.subscribe(queryParam => {
       // this.authenticationCode = queryParam.get("code");
       console.log("********** insidopenIde auth", queryParam.get("code"));

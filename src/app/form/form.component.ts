@@ -1,6 +1,8 @@
 import { Component, OnInit } from "@angular/core";
 import { FormGroup, FormControl, FormBuilder } from "@angular/forms";
 import { MatDatepickerInputEvent } from "@angular/material/datepicker";
+import { OpenidService } from "../service/openid.service"
+import { from } from 'rxjs';
 
 @Component({
   selector: "app-form",
@@ -16,17 +18,17 @@ export class FormComponent implements OnInit {
 
   addEvent(type: string, event: MatDatepickerInputEvent<Date>) {
     if (type === "start") {
-      this.regForm.get("startdate").setValue(event.value);
-      start: Date = this.regForm.get("startdate").value;
-      report: Date = this.regForm.get("startdate").value;
+      this.regForm.get("request_start_date").setValue(event.value);
+      start: Date = this.regForm.get("request_start_date").value;
+      report: Date = this.regForm.get("request_start_date").value;
       console.log(
-        `${type}: ${event.value} -> ${this.regForm.get("startdate").value}`
+        `${type}: ${event.value} -> ${this.regForm.get("request_start_date").value}`
       );
-      console.log(` ${this.regForm.get("reportdate").value}`);
+      console.log(` ${this.regForm.get("request_report_date").value}`);
     } else if (type === "report") {
-      this.regForm.get("reportdate").setValue(event.value);
+      this.regForm.get("request_report_date").setValue(event.value);
       console.log(
-        `${type}: ${event.value} -> ${this.regForm.get("reportdate").value}`
+        `${type}: ${event.value} -> ${this.regForm.get("request_report_date").value}`
       );
     }
   }
@@ -47,7 +49,7 @@ export class FormComponent implements OnInit {
   time_range = new FormGroup({});
   private regForm: FormGroup;
 
-  constructor(formBuilder: FormBuilder) {
+  constructor(formBuilder: FormBuilder,  private openId: OpenidService,) {
     const currentYear = new Date().getFullYear();
     this.startMinDate = new Date();
     this.startMaxDate = new Date(currentYear, 11, 31);
@@ -55,19 +57,14 @@ export class FormComponent implements OnInit {
     this.reportMaxDate = new Date(currentYear, 11, 31);
 
     this.regForm = formBuilder.group({
-      startdate: new FormControl(new Date()),
-      reportdate: new FormControl(new Date())
+      request_start_date: new FormControl(new Date()),
+      request_report_date: new FormControl(new Date())
     });
   }
 
   ngOnInit() {}
-  // public onDate(event): void {
-  //   this.roomsFilter.date = event;
-  //   this.getData(this.roomsFilter.date);
-  // }
-  // getData(date: any) {
-  //   throw new Error("Method not implemented.");
-  // }
 
-  onSubmit() {}
+  onSubmit() {
+    this.openId.makeAholidayRequest(this.regForm.value).subscribe(date => console.log(date))
+  }
 }

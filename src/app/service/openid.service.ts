@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Observable } from "rxjs";
+import { Requester } from '../form/requester';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,8 @@ export class OpenidService {
   private validateTokenUrl = "http://localhost:8080/validate";
   private addUnavailableEmployeeUrl = "http://localhost:8080/addemployee"
   private checkEmail = "http://localhost:8080/verifymail/";
-  private getRequestsForEmployeeUrl = "http://localhost:8080/api/v1/request/requester/"
+  private getRequestsForEmployeeUrl = "http://localhost:8080/api/v1/request/requester/";
+  private makeRequestLink = "http://localhost:8080/api/v1/request"
 
 
   constructor(private http: HttpClient) { }
@@ -48,12 +50,14 @@ addEmployee(requestBody: any): Observable<any> {
 }
 
 checkEmployeePresence(employeeEmail:String):Observable<any> {
-  return this.http.get(this.checkEmail + employeeEmail)
+  return this.http.get(this.checkEmail + employeeEmail);
 }
 
 getAllRequestForEmployee(employee_id: any):Observable<any>{
-  return this.http.get(this.getRequestsForEmployeeUrl + employee_id)
+  return this.http.get(this.getRequestsForEmployeeUrl + employee_id);
   }
 
-//makeAholidayRequest(){}
+makeAholidayRequest(employeInfo: Requester):Observable<any>{
+  return this.http.post(this.makeRequestLink, employeInfo);
+}
 }
