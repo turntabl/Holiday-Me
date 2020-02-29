@@ -25,25 +25,24 @@
   <h2>Book A Time Off</h2>
 </div>
 <div class="container-fluid">
-  <form action="" (ngSubmit)="onSubmit()">
+  <form action="" (ngSubmit)="onSubmit()" [formGroup]="form">
     <div class="row formshift">
       <mat-form-field>
         <mat-label>Start date</mat-label>
         <input
           (dateChange)="addEvent('start', $event)"
           matInput
-          [(ngModel)]="requestDetails.startDate"
-          [ngModelOptions]="{ standalone: true }"
           [matDatepickerFilter]="startFilter"
-          [min]="startMinDate"
-          [max]="startMaxDate"
+          [min]="minFromDate"
+          [max]="maxToDate"
           [matDatepicker]="startpicker"
+          formControlName="startdate"
         />
         <mat-datepicker-toggle
           matSuffix
           [for]="startpicker"
         ></mat-datepicker-toggle>
-        <mat-datepicker #startpicker startView="year"></mat-datepicker>
+        <mat-datepicker #startpicker startView="month"></mat-datepicker>
       </mat-form-field>
     </div>
     <!-- placeholder="startMinDate"
@@ -57,30 +56,27 @@
         <input
           (dateChange)="addEvent('report', $event)"
           matInput
-          [(ngModel)]="requestDetails.reportDate"
-          [ngModelOptions]="{ standalone: true }"
           [matDatepickerFilter]="reportFilter"
-          [min]="reportMinDate"
-          [max]="reportMaxDate"
+          [min]="reportMin"
+          [max]="maxToDate"
           [matDatepicker]="reportpicker"
+          formControlName="reportdate"
         />
         <mat-datepicker-toggle
           matSuffix
           [for]="reportpicker"
         ></mat-datepicker-toggle>
-        <mat-datepicker #reportpicker startView="year"></mat-datepicker>
+        <mat-datepicker #reportpicker startView="month"></mat-datepicker>
       </mat-form-field>
+      <div *ngIf="submitted && f.reportdate.errors" class="invalid-feedback">
+        <div *ngIf="f.reportdate.errors.required">
+          Report date must be provided
+        </div>
+        <div *ngIf="f.reportdate.errors.rangeMatch">
+          Report must be after the start date
+        </div>
+      </div>
     </div>
-
-    <!-- <button
-      type="submit"
-      id="submit"
-      class="form-control mb-4 btn"
-      (ngModelChange)="onSubmitChecked($event)"
-      value="triggered"
-    >
-      Submit
-    </button> -->
     <button mat-raised-button type="submit" color="primary">Submit</button>
   </form>
 </div>

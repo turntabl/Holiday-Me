@@ -1,5 +1,12 @@
 import { Component, OnInit } from "@angular/core";
-import { FormGroup, FormControl, FormBuilder } from "@angular/forms";
+import {
+  FormGroup,
+  FormControl,
+  FormBuilder,
+  Validators,
+  AbstractControl,
+  ValidationErrors
+} from "@angular/forms";
 import { MatDatepickerInputEvent } from "@angular/material/datepicker";
 import { ApplicationService } from "../service/application.service";
 import { MakingRequest } from "../makingRequest";
@@ -10,36 +17,22 @@ import { MakingRequest } from "../makingRequest";
   styleUrls: ["./form.component.css"]
 })
 export class FormComponent implements OnInit {
-  startMinDate: Date;
-  startMaxDate: Date;
-  reportMinDate: Date;
-  reportMaxDate: Date;
-  startDateSet: Boolean;
+  [x: string]: any;
+  currentyear = new Date().getFullYear();
+  minFromDate = new Date();
+  reportMin: Date = new Date(
+    new Date().setDate(this.minFromDate.getDate() + 1)
+  );
+  maxToDate = new Date(this.currentyear, 11, 31);
 
   form: FormGroup;
+  submitted = false;
 
   requestDetails = new MakingRequest();
   userEmail = "";
   msgShow: boolean = false;
   validSelection: boolean;
   message: string;
-
-  addEvent(type: string, event: MatDatepickerInputEvent<Date>) {
-    // if (type === "start") {
-    //   this.regForm.get("startdate").setValue(event.value);
-    //   start: Date = this.regForm.get("startdate").value;
-    //   report: Date = this.regForm.get("startdate").value;
-    //   console.log(
-    //     `${type}: ${event.value} -> ${this.regForm.get("startdate").value}`
-    //   );
-    //   console.log(` ${this.regForm.get("reportdate").value}`);
-    // } else if (type === "report") {
-    //   this.regForm.get("reportdate").setValue(event.value);
-    //   console.log(
-    //     `${type}: ${event.value} -> ${this.regForm.get("reportdate").value}`
-    //   );
-    // }
-  }
 
   startFilter = (d: Date | null): boolean => {
     const day = (d || new Date()).getDay();
@@ -53,36 +46,34 @@ export class FormComponent implements OnInit {
     return day !== 0 && day !== 6;
   };
 
-  // dateSort = "";
-  // time_range = new FormGroup({});
-  // private regForm: FormGroup;
+  constructor(formBuilder: FormBuilder, private service: ApplicationService) {}
 
-  constructor(formBuilder: FormBuilder, private service: ApplicationService) {
-    const currentYear = new Date().getFullYear();
-    this.startMinDate = new Date();
-    this.startMaxDate = new Date(currentYear, 11, 31);
-    this.reportMinDate = new Date();
-    this.reportMaxDate = new Date(currentYear, 11, 31);
-
-    //   this.regForm = formBuilder.group({
-    //     startdate: new FormControl(new Date()),
-    //     reportdate: new FormControl(new Date())
-    //   });
+  ngOnInit() {
+    this.form = this.formbuilder.group({
+      startdate: ["", Validators.required],
+      reportdate: ["", Validators.required, daterange]
+    });
   }
 
-  ngOnInit() {}
-  // public onDate(event): void {
-  //   this.roomsFilter.date = event;
-  //   this.getData(this.roomsFilter.date);
-  // }
-  // getData(date: any) {
-  //   throw new Error("Method not implemented.");
-  // }
-
   onSubmit() {
+    this.submitted = true;
+    if (this.form.invalid) {
+      return;
+    }
     alert(
       "Thanks for submitting! Data: " + JSON.stringify(this.requestDetails)
     );
     console.log(JSON.stringify(this.requestDetails));
   }
+}
+
+function daterange(control: AbstractControl): ValidationErrors {
+  if (control.parent != undefined) {
+    var startdate: string = control.parent.get("startdate").value;
+    var reportdate: string = control.parent.get("reportdate").value;
+    if (Date.parse(startdate) >= Date.parse(reportdate)) {
+      return { rangeMatch: true };
+    }
+  }
+  return null;
 }
