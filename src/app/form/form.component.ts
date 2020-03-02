@@ -80,6 +80,6 @@ export class FormComponent implements OnInit {
 
   onSubmit() {
     console.log(this.regForm.value)
-    // this.openId.makeAholidayRequest(this.regForm.value).subscribe(date => console.log(date))
+    this.openId.makeAholidayRequest(this.regForm.value).subscribe(date => console.log(date))
   }
 }
