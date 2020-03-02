@@ -90,9 +90,13 @@
         (selected)="selectedDate($event)"
         (cancelDaterangepicker)="calendarCanceled($event)"
         (applyDaterangepicker)="calendarApplied($event)"
-      />`
+      />
+    </div>
+
+    <div class="row formshift">
+      <input type="hidden" disabled="" id="lp-geocomplete-search-params"/><div style="margin-top:20px;margin-bottom:20px"><div data-arrive-id="datePicker"><div class="_e296pg"><div style="margin-top:8px"><div class="_1vbsmce"><div style="margin-bottom:8px"><label class="_rin72m" for="checkin_input"><span class="_1ep1f1h7">CHECK-IN</span></label><div data-veloute="moweb_datepicker_checkin_input" class="_ne4dj"><div class="_9hxttoo"><div dir="ltr"><div class="_fm9j1ug"><div class="_178faes"><input type="date" class="_14fdu48d" data-veloute="checkin_input" id="checkin_input" name="checkin" placeholder="mm/dd/yyyy" value=""/><div class="_1vbsmce"><div style="margin-bottom:8px"><label class="_rin72m" for="checkout_input"><span class="_1ep1f1h7">CHECKOUT</span></label><div data-veloute="moweb_datepicker_checkout_input" class="_10hp81j"><div class="_9hxttoo"><div dir="ltr"><div class="_fm9j1ug"><div class="_178faes"><input type="date" class="_14fdu48d" data-veloute="checkout_input" id="checkout_input" name="checkout" placeholder="mm/dd/yyyy" value=""/><div style="margin-top:20px;margin-bottom:24px"><div id="lp-guestpicker">
     </div>
 
     <button mat-raised-button type="submit" color="primary">Submit</button>
-  </form>
+  <!-- </form> -->
 </div>
