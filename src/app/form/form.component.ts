@@ -16,9 +16,6 @@ export class FormComponent implements OnInit {
   reportMinDate: Date;
   reportMaxDate: Date;
   startDateSet: Boolean;
-
-  regForm: FormGroup;
-  
   
   addEvent(type: string, event: MatDatepickerInputEvent<Date>) {
     // if (type === "start") {
@@ -51,7 +48,7 @@ export class FormComponent implements OnInit {
 
   dateSort = "";
   time_range = new FormGroup({});
-  // regForm: FormGroup;
+  regForm: FormGroup;
 
   constructor(formBuilder: FormBuilder,  private openId: OpenidService,) {
     const currentYear = new Date().getFullYear();
