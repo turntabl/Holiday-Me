@@ -48,7 +48,7 @@ export class FormComponent implements OnInit {
 
   dateSort = "";
   time_range = new FormGroup({});
-  regForm: FormGroup;
+  private regForm: FormGroup;
 
   constructor(formBuilder: FormBuilder,  private openId: OpenidService,) {
     const currentYear = new Date().getFullYear();
