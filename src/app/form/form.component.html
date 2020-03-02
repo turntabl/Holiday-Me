@@ -24,7 +24,7 @@
         <input
           (dateChange)="addEvent('start', $event)"
           matInput
-          formControlName="request_start_date"
+          [formControlName]="request_start_date"
           [matDatepickerFilter]="startFilter"
           [min]="startMinDate"
           [max]="startMaxDate"
@@ -49,7 +49,7 @@
         <input
           (dateChange)="addEvent('report', $event)"
           matInput
-          formControlName="request_report_date"
+          [formControlName]="request_report_date"
           [matDatepickerFilter]="reportFilter"
           [min]="reportMinDate"
           [max]="reportMaxDate"
