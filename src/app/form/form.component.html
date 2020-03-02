@@ -19,7 +19,7 @@
 <div class="container-fluid">
   <form action="" [formGroup]="time_range" (ngSubmit)="onSubmit()">
     <div class="row formshift">
-      <mat-form-field>
+      <mat-form-field [formGroup]="regForm">
         <mat-label>Start date</mat-label>
         <input
           (dateChange)="addEvent('start', $event)"
