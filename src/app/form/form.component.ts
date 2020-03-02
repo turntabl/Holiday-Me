@@ -16,6 +16,12 @@ export class FormComponent implements OnInit {
   reportMinDate: Date;
   reportMaxDate: Date;
   startDateSet: Boolean;
+
+  regForm: FormGroup = new FormGroup({
+    request_start_date :  new FormControl(''),
+    request_report_date :  new FormControl('')
+  });
+
   
   addEvent(type: string, event: MatDatepickerInputEvent<Date>) {
     if (type === "start") {
@@ -48,7 +54,6 @@ export class FormComponent implements OnInit {
 
   dateSort = "";
   time_range = new FormGroup({});
-  regForm: FormGroup;
 
   constructor(formBuilder: FormBuilder,  private openId: OpenidService,) {
     const currentYear = new Date().getFullYear();
@@ -57,18 +62,20 @@ export class FormComponent implements OnInit {
     this.reportMinDate = new Date();
     this.reportMaxDate = new Date(currentYear, 11, 31);
 
-      this.regForm = formBuilder.group({
-      // request_start_date: new FormControl(new Date()),
-      // request_report_date: new FormControl(new Date()),
-      from: localStorage.getItem("userEmail"),
-      requester_id: localStorage.getItem("employee_id"),
-      requester_name: localStorage.getItem("f_name") + " " + localStorage.getItem("l_name")
-    });
+    //   this.regForm = formBuilder.group({
+    //   // request_start_date: new FormControl(new Date()),
+    //   // request_report_date: new FormControl(new Date()),
+    //   from: localStorage.getItem("userEmail"),
+    //   requester_id: localStorage.getItem("employee_id"),
+    //   requester_name: localStorage.getItem("f_name") + " " + localStorage.getItem("l_name")
+    // });
+    // this.regForm.
   }
 
   ngOnInit() {}
 
   onSubmit() {
-    this.openId.makeAholidayRequest(this.regForm.value).subscribe(date => console.log(date))
+    console.log(this.regForm.value)
+    // this.openId.makeAholidayRequest(this.regForm.value).subscribe(date => console.log(date))
   }
 }
