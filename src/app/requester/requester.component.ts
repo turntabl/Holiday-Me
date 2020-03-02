@@ -84,9 +84,9 @@ export class RequesterComponent implements OnInit {
   dataSource = new MatTableDataSource(this.ELEMENT_DATA);
 
   btnColor(requestStatus: string) {
-    if (requestStatus === "Declined") {
+    if (requestStatus === "DECLINED") {
       return "btn-danger";
-    } else if (requestStatus === "Approved") {
+    } else if (requestStatus === "APPROVED") {
       return "btn-success";
     } else {
       return "btn-lemon";
