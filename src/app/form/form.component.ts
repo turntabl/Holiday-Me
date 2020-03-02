@@ -81,7 +81,10 @@ export class FormComponent implements OnInit {
 
   onSubmit() {
     alert(
-      "Thanks for submitting! Data: " + JSON.stringify(this.requestDetails)
+      "Thanks for requesting: " +
+        JSON.stringify(
+          this.requestDetails.startDate + " " + this.requestDetails.reportDate
+        )
     );
     console.log(JSON.stringify(this.requestDetails));
   }
