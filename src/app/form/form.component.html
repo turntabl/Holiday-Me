@@ -24,10 +24,12 @@
         <input
           (dateChange)="addEvent('start', $event)"
           matInput
+          formControlName="request_start_date"
           [matDatepickerFilter]="startFilter"
           [min]="startMinDate"
           [max]="startMaxDate"
-          [matDatepicker]="startpicker"
+          [matDatepicker]="startpicker"2244
+          
         />
         <mat-datepicker-toggle
           matSuffix
@@ -42,11 +44,12 @@
     [matDatepickerFilter]="reportFilter"
   [startAt]="startDate" -->
     <div class="row formshift">
-      <mat-form-field>
+      <mat-form-field [formGroup]="regForm">
         <mat-label>Report date</mat-label>
         <input
           (dateChange)="addEvent('report', $event)"
           matInput
+          formControlName="request_report_date"
           [matDatepickerFilter]="reportFilter"
           [min]="reportMinDate"
           [max]="reportMaxDate"

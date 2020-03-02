@@ -62,7 +62,7 @@ export class FormComponent implements OnInit {
       request_report_date: new FormControl(new Date()),
       from: localStorage.getItem("userEmail"),
       requester_id: localStorage.getItem("employee_id"),
-      requester_name: localStorage.getItem("l_name") + " " +localStorage.getItem("f_name")
+      requester_name: localStorage.getItem("f_name") + " " + localStorage.getItem("l_name")
     });
   }
 
