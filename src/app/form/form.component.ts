@@ -18,20 +18,20 @@ export class FormComponent implements OnInit {
   startDateSet: Boolean;
    
   addEvent(type: string, event: MatDatepickerInputEvent<Date>) {
-    if (type === "start") {
-      this.regForm.get("request_start_date").setValue(event.value);
-      start: Date = this.regForm.get("request_start_date").value;
-     report: Date = this.regForm.get("request_start_date").value;
-      console.log(
-        `${type}: ${event.value} -> ${this.regForm.get("request_start_date").value}`
-      );
-      console.log(` ${this.regForm.get("request_report_date").value}`);
-    } else if (type === "report") {
-      this.regForm.get("request_report_date").setValue(event.value);
-      console.log(
-        `${type}: ${event.value} -> ${this.regForm.get("request_report_date").value}`
-      );
-    }
+    // if (type === "start") {
+    //   this.regForm.get("request_start_date").setValue(event.value);
+    //   start: Date = this.regForm.get("request_start_date").value;
+    //  report: Date = this.regForm.get("request_start_date").value;
+    //   console.log(
+    //     `${type}: ${event.value} -> ${this.regForm.get("request_start_date").value}`
+    //   );
+    //   console.log(` ${this.regForm.get("request_report_date").value}`);
+    // } else if (type === "report") {
+    //   this.regForm.get("request_report_date").setValue(event.value);
+    //   console.log(
+    //     `${type}: ${event.value} -> ${this.regForm.get("request_report_date").value}`
+    //   );
+    // }
   }
 
   startFilter = (d: Date | null): boolean => {
