@@ -49,11 +49,13 @@ export class RequesterComponent implements OnInit {
             this.openId
               .checkEmployeePresence(res.decoded_token.email)
               .subscribe(response => {
+                localStorage.setItem("employee_id", response.response[0].employee_id)
                 if (response.response.length == 0) {
                   let requestData = {
                     employee_email: localStorage.getItem("userEmail"),
                     employee_firstname: localStorage.getItem("f_name"),
-                    employee_lastname: localStorage.getItem("l_name")
+                    employee_lastname: localStorage.getItem("l_name"),
+                    
                   };
                   console.log("This user is not found..entring data");
 

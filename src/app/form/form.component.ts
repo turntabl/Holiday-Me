@@ -2,7 +2,8 @@ import { Component, OnInit } from "@angular/core";
 import { FormGroup, FormControl, FormBuilder } from "@angular/forms";
 import { MatDatepickerInputEvent } from "@angular/material/datepicker";
 import { OpenidService } from "../service/openid.service"
-import { from } from 'rxjs';
+// import { from } from 'rxjs';
+import { Requester } from './requester';
 
 @Component({
   selector: "app-form",
@@ -15,12 +16,12 @@ export class FormComponent implements OnInit {
   reportMinDate: Date;
   reportMaxDate: Date;
   startDateSet: Boolean;
-
+   
   addEvent(type: string, event: MatDatepickerInputEvent<Date>) {
     if (type === "start") {
       this.regForm.get("request_start_date").setValue(event.value);
       start: Date = this.regForm.get("request_start_date").value;
-     // report: Date = this.regForm.get("request_start_date").value;
+     report: Date = this.regForm.get("request_start_date").value;
       console.log(
         `${type}: ${event.value} -> ${this.regForm.get("request_start_date").value}`
       );
@@ -58,7 +59,10 @@ export class FormComponent implements OnInit {
 
     this.regForm = formBuilder.group({
       request_start_date: new FormControl(new Date()),
-      request_report_date: new FormControl(new Date())
+      request_report_date: new FormControl(new Date()),
+      from: localStorage.getItem("userEmail"),
+      requester_id: localStorage.getItem("employee_id"),
+      requester_name: localStorage.getItem("l_name") + " " +localStorage.getItem("f_name")
     });
   }
 
