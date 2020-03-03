@@ -61,7 +61,7 @@ export class RequesterComponent implements OnInit {
                   this.openId.addEmployee(requestData).subscribe(response_ => {
                     console.log(response_);
                     this.userName = localStorage.getItem("f_name") + " " + localStorage.getItem("l_name")
-                    localStorage.setItem("employee_id", response_.response.employee_id)
+                    localStorage.setItem("employee_id", response.response[0].employee_id)
                   });
 
                 } else {
