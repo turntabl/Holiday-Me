@@ -11,7 +11,7 @@
 </div>
 <div class="container-fluid">
   <form action="" (ngSubmit)="onSubmit()">
-    <div class="row formshift">
+    <!-- <div class="row formshift">
       <mat-form-field>
         <mat-label>Start date</mat-label>
         <input
@@ -30,13 +30,9 @@
         ></mat-datepicker-toggle>
         <mat-datepicker #startpicker startView="year"></mat-datepicker>
       </mat-form-field>
-    </div>
-    <!-- placeholder="startMinDate"
-    [matDatepickerFilter]="startFilter"
-    [startAt]="startDate"
-    [matDatepickerFilter]="reportFilter"
-  [startAt]="startDate" -->
-    <div class="row formshift">
+    </div> -->
+
+    <!-- <div class="row formshift">
       <mat-form-field>
         <mat-label>Report date</mat-label>
         <input
@@ -55,25 +51,27 @@
         ></mat-datepicker-toggle>
         <mat-datepicker #reportpicker startView="year"></mat-datepicker>
       </mat-form-field>
-    </div>
-
-    <!-- <div class="row formshift">
-      <mat-form-field>
-        <input
-          matInput
-          placeholder="Choose a date"
-          [satDatepicker]="spicker"
-          [value]="date"
-        />
-        <sat-datepicker #picker [rangeMode]="true"></sat-datepicker>
-        <sat-datepicker-toggle
-          matSuffix
-          [for]="spicker"
-        ></sat-datepicker-toggle>
-      </mat-form-field>
     </div> -->
 
-    <!-- <button
+    <div class="row formshift">
+      <mat-form-field style="width: 70%;">
+        <input
+          style="width: 60%;"
+          matInput
+          placeholder="Choose a date"
+          [satDatepicker]="picker2"
+          formControlName="date"
+        />
+
+        <sat-datepicker #picker2 [rangeMode]="true"> </sat-datepicker>
+        <sat-datepicker-toggle
+          matSuffix
+          [for]="picker2"
+        ></sat-datepicker-toggle>
+      </mat-form-field>
+      <!-- </div> -->
+
+      <!-- <button
       type="submit"
       id="submit"
       class="form-control mb-4 btn"
@@ -83,7 +81,7 @@
       Submit
     </button> -->
 
-    <div style="padding:25px;">
+      <!-- <div style="padding:25px;">
       <div class="form-group">
         <div
           class="input-group"
@@ -122,7 +120,7 @@
             </a>
           </span>
         </div>
-      </div>
+      </div> -->
       <!-- </div> -->
 
       <button mat-raised-button type="submit" color="primary">Submit</button>

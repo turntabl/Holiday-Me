@@ -19,6 +19,7 @@ export class FormComponent implements OnInit {
   startDateSet: Boolean;
 
   form: FormGroup;
+  inlineRange;
 
   requestDetails = new MakingRequest();
   userEmail = "";
@@ -72,43 +73,6 @@ export class FormComponent implements OnInit {
     // e.event
     // e.picker
   }
-  // see original project for full list of options
-  // can also be setup using the config service to apply to multiple pickers
-  // public options: any = {
-  //   locale: { format: "YYYY-MM-DD" },
-  //   alwaysShowCalendars: false
-  // };
-
-  // public selectedDate(value: any, datepicker?: any) {
-  // this is the date  selected
-  // console.log(value);
-
-  // any object can be passed to the selected event and it will be passed back here
-  // datepicker.start = value.start;
-  // datepicker.end = value.end;
-
-  // use passed valuable to update state
-  //   this.daterange.start = value.start;
-  //   this.daterange.end = value.end;
-  //   this.daterange.label = value.label;
-  // }
-
-  addEvent(type: string, event: MatDatepickerInputEvent<Date>) {
-    // if (type === "start") {
-    //   this.regForm.get("startdate").setValue(event.value);
-    //   start: Date = this.regForm.get("startdate").value;
-    //   report: Date = this.regForm.get("startdate").value;
-    //   console.log(
-    //     `${type}: ${event.value} -> ${this.regForm.get("startdate").value}`
-    //   );
-    //   console.log(` ${this.regForm.get("reportdate").value}`);
-    // } else if (type === "report") {
-    //   this.regForm.get("reportdate").setValue(event.value);
-    //   console.log(
-    //     `${type}: ${event.value} -> ${this.regForm.get("reportdate").value}`
-    //   );
-    // }
-  }
 
   startFilter = (d: Date | null): boolean => {
     const day = (d || new Date()).getDay();
@@ -122,10 +86,6 @@ export class FormComponent implements OnInit {
     return day !== 0 && day !== 6;
   };
 
-  // dateSort = "";
-  // time_range = new FormGroup({});
-  // private regForm: FormGroup;
-
   constructor(
     formBuilder: FormBuilder,
     private service: ApplicationService,
@@ -136,25 +96,19 @@ export class FormComponent implements OnInit {
     this.startMaxDate = new Date(currentYear, 11, 31);
     this.reportMinDate = new Date();
     this.reportMaxDate = new Date(currentYear, 11, 31);
+    this.form = formBuilder.group({
+      date: [{ begin: new Date(2018, 7, 5), end: new Date(2018, 7, 25) }]
+    });
 
-    //   this.regForm = formBuilder.group({
-    //     startdate: new FormControl(new Date()),
-    //     reportdate: new FormControl(new Date())
-    //   });
     this.daterangepickerOptions.settings = {
       locale: { format: "YYYY-MM-DD" },
       alwaysShowCalendars: false
     };
   }
-
+  inlineRangeChange($event) {
+    this.inlineRange = $event;
+  }
   ngOnInit() {}
-  // public onDate(event): void {
-  //   this.roomsFilter.date = event;
-  //   this.getData(this.roomsFilter.date);
-  // }
-  // getData(date: any) {
-  //   throw new Error("Method not implemented.");
-  // }
 
   onSubmit() {
     alert(

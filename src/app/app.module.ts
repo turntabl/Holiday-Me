@@ -17,6 +17,7 @@ import { MatButtonModule } from "@angular/material/button";
 import { HttpClientModule, HttpClient } from "@angular/common/http";
 import { LoginComponent } from "./login/login.component";
 import { Daterangepicker } from "ng2-daterangepicker";
+import { SatDatepickerModule, SatNativeDateModule } from "saturn-datepicker";
 
 @NgModule({
   declarations: [
@@ -41,7 +42,9 @@ import { Daterangepicker } from "ng2-daterangepicker";
     MatNativeDateModule,
     HttpClientModule,
     MatButtonModule,
-    Daterangepicker
+    Daterangepicker,
+    SatDatepickerModule,
+    SatNativeDateModule
     // NgxAaaDatepickerModule
   ],
   providers: [],
