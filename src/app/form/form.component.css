@@ -28,3 +28,6 @@ button {
   margin-top: 6%;
   z-index: 999;
 }
+ul {
+  text-align: center;
+}

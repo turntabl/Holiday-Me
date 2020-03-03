@@ -1,18 +1,3 @@
-<!-- Navbar -->
-<!-- <div class="side">
-  <nav class="navbar fixed-top navbar-dark bg-primary side mb-4">
-    <div class="container-fluid">
-      <img
-        src="../../assets/logo.png"
-        width="30"
-        height="30"
-        class="d-inline-block align-top"
-        alt="logo"
-      />
-      <h5>Turntabl</h5>
-    </div>
-  </nav>
-</div> -->
 <div class="text-center mes" *ngIf="msgShow == true">
   <div class="alert alert-danger" *ngIf="validSelection == false" role="alert">
     {{ message }}
@@ -72,6 +57,22 @@
       </mat-form-field>
     </div>
 
+    <!-- <div class="row formshift">
+      <mat-form-field>
+        <input
+          matInput
+          placeholder="Choose a date"
+          [satDatepicker]="spicker"
+          [value]="date"
+        />
+        <sat-datepicker #picker [rangeMode]="true"></sat-datepicker>
+        <sat-datepicker-toggle
+          matSuffix
+          [for]="spicker"
+        ></sat-datepicker-toggle>
+      </mat-form-field>
+    </div> -->
+
     <!-- <button
       type="submit"
       id="submit"
@@ -81,22 +82,51 @@
     >
       Submit
     </button> -->
-    <div class="row formshift">
-      <input
-        type="text"
-        name="daterangeInput"
-        daterangepicker
-        [options]="options"
-        (selected)="selectedDate($event)"
-        (cancelDaterangepicker)="calendarCanceled($event)"
-        (applyDaterangepicker)="calendarApplied($event)"
-      />
-    </div>
 
-    <div class="row formshift">
-      <input type="hidden" disabled="" id="lp-geocomplete-search-params"/><div style="margin-top:20px;margin-bottom:20px"><div data-arrive-id="datePicker"><div class="_e296pg"><div style="margin-top:8px"><div class="_1vbsmce"><div style="margin-bottom:8px"><label class="_rin72m" for="checkin_input"><span class="_1ep1f1h7">CHECK-IN</span></label><div data-veloute="moweb_datepicker_checkin_input" class="_ne4dj"><div class="_9hxttoo"><div dir="ltr"><div class="_fm9j1ug"><div class="_178faes"><input type="date" class="_14fdu48d" data-veloute="checkin_input" id="checkin_input" name="checkin" placeholder="mm/dd/yyyy" value=""/><div class="_1vbsmce"><div style="margin-bottom:8px"><label class="_rin72m" for="checkout_input"><span class="_1ep1f1h7">CHECKOUT</span></label><div data-veloute="moweb_datepicker_checkout_input" class="_10hp81j"><div class="_9hxttoo"><div dir="ltr"><div class="_fm9j1ug"><div class="_178faes"><input type="date" class="_14fdu48d" data-veloute="checkout_input" id="checkout_input" name="checkout" placeholder="mm/dd/yyyy" value=""/><div style="margin-top:20px;margin-bottom:24px"><div id="lp-guestpicker">
-    </div>
+    <div style="padding:25px;">
+      <div class="form-group">
+        <div
+          class="input-group"
+          name="daterangeInput"
+          daterangepicker
+          [options]="options"
+          (selected)="selectedDate($event)"
+          (applyDaterangepicker)="applyDate($event)"
+        >
+          <span class="form-control uneditable-input">
+            {{ daterange.start | date: "M/dd/y" }} -
+          </span>
+          <span class="input-group-btn">
+            <a type="button" class="btn btn-default">
+              <i class="glyphicon glyphicon-calendar"></i>
+            </a>
+          </span>
+        </div>
 
-    <button mat-raised-button type="submit" color="primary">Submit</button>
-  <!-- </form> -->
+        <p>&nbsp;</p>
+
+        <div
+          class="input-group"
+          name="daterangeInput"
+          daterangepicker
+          [options]="options"
+          (selected)="selectedDate($event)"
+          (applyDaterangepicker)="applyDate($event)"
+        >
+          <span class="form-control uneditable-input">
+            - {{ daterange.end | date: "M/dd/y" }}
+          </span>
+          <span class="input-group-btn">
+            <a type="button" class="btn btn-default">
+              <i class="glyphicon glyphicon-calendar"></i>
+            </a>
+          </span>
+        </div>
+      </div>
+      <!-- </div> -->
+
+      <button mat-raised-button type="submit" color="primary">Submit</button>
+      <!-- </form> -->
+    </div>
+  </form>
 </div>

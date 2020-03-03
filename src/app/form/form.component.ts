@@ -26,15 +26,38 @@ export class FormComponent implements OnInit {
   validSelection: boolean;
   message: string;
 
+  public daterange: any = {
+    start: Date.now(),
+    end: Date.now(),
+    label: ""
+  };
+
   // @ViewChild(DaterangepickerComponent)
   private picker: DaterangepickerComponent;
-  public updateDateRange() {
-    this.picker.datePicker.setStartDate("2017-03-27");
-    this.picker.datePicker.setEndDate("2017-04-08");
+  // public updateDateRange() {
+  //   this.picker.datePicker.setStartDate("2017-03-27");
+  //   this.picker.datePicker.setEndDate("2017-04-08");
+  // }
+
+  public options: any = {
+    locale: { format: "YYYY-MM-DD" },
+    alwaysShowCalendars: false
+  };
+  public selectedDate(value: any) {
+    console.log(value);
+    this.daterange.start = value.start;
+    this.daterange.end = value.end;
   }
 
-  public daterange: any = {};
+  public applyDate(e: any) {
+    console.log(e);
+    //this.daterange.start = e.picker.startDate;
+    //this.daterange.end = e.picker.endDate;
+  }
 
+  ngAfterViewInit() {
+    this.picker.datePicker.setStartDate("2007-03-27");
+  }
   // expected output is an object containing the event and the picker.
   // your method can be named whaterver you want.
   // you can add multiple params to the method and pass them in the template
@@ -51,24 +74,24 @@ export class FormComponent implements OnInit {
   }
   // see original project for full list of options
   // can also be setup using the config service to apply to multiple pickers
-  public options: any = {
-    locale: { format: "YYYY-MM-DD" },
-    alwaysShowCalendars: false
-  };
+  // public options: any = {
+  //   locale: { format: "YYYY-MM-DD" },
+  //   alwaysShowCalendars: false
+  // };
 
-  public selectedDate(value: any, datepicker?: any) {
-    // this is the date  selected
-    console.log(value);
+  // public selectedDate(value: any, datepicker?: any) {
+  // this is the date  selected
+  // console.log(value);
 
-    // any object can be passed to the selected event and it will be passed back here
-    datepicker.start = value.start;
-    datepicker.end = value.end;
+  // any object can be passed to the selected event and it will be passed back here
+  // datepicker.start = value.start;
+  // datepicker.end = value.end;
 
-    // use passed valuable to update state
-    this.daterange.start = value.start;
-    this.daterange.end = value.end;
-    this.daterange.label = value.label;
-  }
+  // use passed valuable to update state
+  //   this.daterange.start = value.start;
+  //   this.daterange.end = value.end;
+  //   this.daterange.label = value.label;
+  // }
 
   addEvent(type: string, event: MatDatepickerInputEvent<Date>) {
     // if (type === "start") {
