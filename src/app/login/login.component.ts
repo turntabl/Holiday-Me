@@ -12,23 +12,12 @@ export class LoginComponent implements OnInit {
   idToken;
   isValid = false;
 
-  constructor(private openId: OpenidService,
-              private activatedRoute: ActivatedRoute) { }
+  constructor(private openId: OpenidService, private activatedRoute: ActivatedRoute) { }
 
   ngOnInit() {
     this.activatedRoute.queryParamMap.subscribe(queryParam => {
       this.authenticationCode = queryParam.get("code");
-      console.log("********** insidopenIde auth", this.authenticationCode);
-     
-      // this.oidService._postAuthCodForAccessAndIdToken(this._authCode);
-      this.openId.postAuthenticationCodForAccessAndIdToken(this.authenticationCode).subscribe(response => {
-        console.log(response)
-        this.idToken = response.id_token
-      })
+      this.openId.postAuthenticationCodForAccessAndIdToken(this.authenticationCode).subscribe()
     });
-
-    // this.openId.postValidateTokeId(this.idToken).subscribe(response => {
-    //   console.log(response)
-    // })
   } 
 }

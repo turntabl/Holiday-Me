@@ -32,14 +32,12 @@ export class RequesterComponent implements OnInit {
 
   ngOnInit() {
     this.activatedRoute.queryParamMap.subscribe(queryParam => {
-      // this.authenticationCode = queryParam.get("code");
       console.log("********** insidopenIde auth", queryParam.get("code"));
       this.openId
         .postAuthenticationCodForAccessAndIdToken(queryParam.get("code"))
         .subscribe(response => {
           console.log("token", response);
           this.idToken = response.id_token;
-          //this.val()
           this.openId.postValidateTokeId(this.idToken).subscribe(res => {
             console.log(res);
             localStorage.setItem("userEmail", res.decoded_token.email);
@@ -69,8 +67,6 @@ export class RequesterComponent implements OnInit {
                   this.userName = localStorage.getItem("f_name") + " " + localStorage.getItem("l_name")
                   this.openId.getAllRequestForEmployee(response.response[0].employee_id).subscribe(
                      data => {this.dataSource = new MatTableDataSource(data)
-                    // data => {
-                    // this.ELEMENT_DATA = data
                     console.log("emploeyee_data",data);                   
                   })
                 }

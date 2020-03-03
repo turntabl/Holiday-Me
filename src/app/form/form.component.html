@@ -1,18 +1,3 @@
-<!-- Navbar -->
-<!-- <div class="side">
-  <nav class="navbar fixed-top navbar-dark bg-primary side mb-4">
-    <div class="container-fluid">
-      <img
-        src="../../assets/logo.png"
-        width="30"
-        height="30"
-        class="d-inline-block align-top"
-        alt="logo"
-      />
-      <h5>Turntabl</h5>
-    </div>
-  </nav>
-</div> -->
 <div class="row heading">
   <h2>Book A Time Off</h2>
 </div>
@@ -36,11 +21,6 @@
         <mat-datepicker #startpicker startView="year"></mat-datepicker>
       </mat-form-field>
     </div>
-    <!-- placeholder="startMinDate"
-    [matDatepickerFilter]="startFilter"
-    [startAt]="startDate"
-    [matDatepickerFilter]="reportFilter"
-  [startAt]="startDate" -->
     <div class="row formshift">
       <mat-form-field >
         <mat-label>Report date</mat-label>
@@ -59,16 +39,6 @@
         <mat-datepicker #reportpicker startView="year"></mat-datepicker>
       </mat-form-field>
     </div>
-
-    <!-- <button
-      type="submit"
-      id="submit"
-      class="form-control mb-4 btn"
-      (ngModelChange)="onSubmitChecked($event)"
-      value="triggered"
-    >
-      Submit
-    </button> -->
     <button mat-raised-button color="primary" type="submit" >Submit</button>
   </form>
 </div>
