@@ -49,7 +49,7 @@ export class RequesterComponent implements OnInit {
               .subscribe(response => {
                 //localStorage.setItem("employee_id", response.response[0].employee_id)
                 if (response.response.length == 0) {
-                  localStorage.setItem("employee_id", response.response[0].employee_id);
+                  //localStorage.setItem("employee_id", response.response[0].employee_id);
                   let requestData = {
                     employee_email: localStorage.getItem("userEmail"),
                     employee_firstname: localStorage.getItem("f_name"),
@@ -61,10 +61,12 @@ export class RequesterComponent implements OnInit {
                   this.openId.addEmployee(requestData).subscribe(response_ => {
                     console.log(response_);
                     this.userName = localStorage.getItem("f_name") + " " + localStorage.getItem("l_name")
+                    localStorage.setItem("employee_id", response.response[0].employee_id)
                   });
 
                 } else {
                   console.log("user found", response);
+                  localStorage.setItem("employee_id", response.response[0].employee_id)
                   this.userName = localStorage.getItem("f_name") + " " + localStorage.getItem("l_name")
                   this.openId.getAllRequestForEmployee(response.response[0].employee_id).subscribe(
                      data => {this.dataSource = new MatTableDataSource(data)
