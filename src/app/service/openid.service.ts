@@ -102,7 +102,7 @@ export class OpenidService {
     let headers = new HttpHeaders().set("Authorization", idToken);
     console.log("req headers from req service |", headers);
     return this.http.get(
-      "http://services-1305979961.us-east-2.elb.amazonaws.com/holiday/v1/api/employees",
+      "http://services-1305979961.us-east-2.elb.amazonaws.com/holiday/api/v1/requests",
       { headers: headers }
     );
   }
