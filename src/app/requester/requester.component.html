@@ -13,7 +13,7 @@
 
   <div class="col-4 smallbut">
     <div class="bg-white p-2 rounded shadow-sm h-100">
-      {{userName}}
+      {{ userName }}
       <button class="btn btn-success btn-circle m-1">
         <!-- 18 -->
       </button>
@@ -33,13 +33,17 @@
     <!-- Start Date Column -->
     <ng-container matColumnDef="request_start_date">
       <th mat-header-cell *matHeaderCellDef>Start Date</th>
-      <td mat-cell *matCellDef="let element">{{ element.request_start_date }}</td>
+      <td mat-cell *matCellDef="let element">
+        {{ element.request_start_date }}
+      </td>
     </ng-container>
 
     <!-- Reporting Date Column -->
     <ng-container matColumnDef="request_report_date">
       <th mat-header-cell *matHeaderCellDef>Report Date</th>
-      <td mat-cell *matCellDef="let element">{{ element.request_report_date }}</td>
+      <td mat-cell *matCellDef="let element">
+        {{ element.request_report_date }}
+      </td>
     </ng-container>
 
     <!-- Status Column -->
@@ -58,4 +62,22 @@
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
   </table>
+</div>
+
+<div class="col-md-6 ml-5 my-auto">
+  <button class="btn btn-warning" (click)="onGetRequests()">
+    Get Requests
+  </button>
+  <div class="row">
+    <div class="col-5 my-auto mx-auto">
+      <ul class="list-group text-center">
+        <li class="list-group-item" *ngFor="let res of response">
+          {{ res }}
+        </li>
+      </ul>
+    </div>
+  </div>
+  <button (click)="onGetRequests()">
+    Get Requests..
+  </button>
 </div>

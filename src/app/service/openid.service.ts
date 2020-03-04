@@ -58,4 +58,12 @@ getAllRequestForEmployee(employee_id: any):Observable<any>{
 makeAholidayRequest(employeInfo: any):Observable<any>{
   return this.http.post(this.makeRequestLink, employeInfo);
 }
+
+getRequests(): Observable<any>{
+  return this.http.get("http://localhost:7070/api/v1/requests");
+  }
+
 }
+
+
+
