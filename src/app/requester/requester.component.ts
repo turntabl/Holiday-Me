@@ -110,16 +110,17 @@ export class RequesterComponent implements OnInit {
   onGetRequests() {
     this.openId.getRequests(this.idToken).subscribe(res => {
       console.log("get reqs response | ", res);
-      console.log("passed idToken inside get req | ", res);
+      console.log("passed idToken inside get req | ", this.idToken);
       this.response = res;
     });
   }
-  employees: [] = [];
-  onGetEmpolyees() {
-    this.openId.getEmpolyees().subscribe(res => {
-      console.log(res);
-      this.employees = res;
-    });
+
+  // employees: [] = [];
+  // onGetEmpolyees() {
+    // this.openId.getEmpolyees().subscribe(res => {
+      // console.log(res);
+      // this.employees = res;
+    // });
   }
 
 

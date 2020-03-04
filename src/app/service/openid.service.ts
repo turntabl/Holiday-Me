@@ -74,7 +74,7 @@ export class OpenidService {
     return this.http.get("http://services-1305979961.us-east-2.elb.amazonaws.com/holiday/api/v1/requests", { headers: headers });
   }
 
-  getEmpolyees(): Observable<any> {
-    return this.http.get("http://services-1305979961.us-east-2.elb.amazonaws.com/holiday/v1/api/employees");
-  }
+  // getEmpolyees(): Observable<any> {
+  //   return this.http.get("http://services-1305979961.us-east-2.elb.amazonaws.com/holiday/v1/api/employees");
+  // }
 }
