@@ -66,7 +66,7 @@ export class OpenidService {
 
   
   getRequests(): Observable<any> {
-    return this.http.get("http://localhost:7070/api/v1/requests");
+    return this.http.get("http://services-1305979961.us-east-2.elb.amazonaws.com/holiday/api/v1/requests");
   }
 
   getEmpolyees(): Observable<any> {
