@@ -112,4 +112,11 @@ export class RequesterComponent implements OnInit {
       this.response = res;
     });
   }
+  employees: [] = [];
+  getEmpolyees() {
+    this.openId.getEmpolyees().subscribe(res => {
+      console.log(res);
+      this.employees = res;
+    });
+  }
 }
