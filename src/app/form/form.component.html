@@ -13,69 +13,22 @@
   <form action="" (ngSubmit)="onSubmit()">
     <div class="row formshift">
       <mat-form-field>
-        <mat-label>Start date</mat-label>
         <input
-          (dateChange)="addEvent('start', $event)"
-          matInput
-          [(ngModel)]="requestDetails.startDate"
-          [ngModelOptions]="{ standalone: true }"
-          [matDatepickerFilter]="startFilter"
-          [min]="startMinDate"
-          [max]="startMaxDate"
-          [matDatepicker]="startpicker"
-        />
-        <mat-datepicker-toggle
-          matSuffix
-          [for]="startpicker"
-        ></mat-datepicker-toggle>
-        <mat-datepicker #startpicker startView="month"></mat-datepicker>
-      </mat-form-field>
-    </div>
-    <!-- placeholder="startMinDate"
-    [matDatepickerFilter]="startFilter"
-    [startAt]="startDate"
-    [matDatepickerFilter]="reportFilter"
-  [startAt]="startDate" -->
-    <div class="row formshift">
-      <mat-form-field>
-        <mat-label>Report date</mat-label>
-        <input
-          (dateChange)="addEvent('report', $event)"
-          matInput
-          [(ngModel)]="requestDetails.reportDate"
-          [ngModelOptions]="{ standalone: true }"
-          [matDatepickerFilter]="reportFilter"
-          [min]="reportMinDate"
-          [max]="reportMaxDate"
-          [matDatepicker]="reportpicker"
-        />
-        <mat-datepicker-toggle
-          matSuffix
-          [for]="reportpicker"
-        ></mat-datepicker-toggle>
-        <mat-datepicker #reportpicker startView="month"></mat-datepicker>
-      </mat-form-field>
-    </div>
-
-    <div class="row formshift">
-      <mat-form-field>
-        <input
-          (dateChange)="addEvent('start', $event)"
+          (dateChange)="selectedDate($event.value)"
           matInput
           [(ngModel)]="requestDetails"
-          [matDatepickerFilter]="startFilter"
+          [ngModelOptions]="{ standalone: true }"
+          [matDatepickerFilter]="myFilter"
           [min]="startMinDate"
           [max]="startMaxDate"
           placeholder="Choose a date"
           [satDatepicker]="picker"
-          formControlName="date"
         />
         <sat-datepicker #picker [rangeMode]="true"> </sat-datepicker>
         <sat-datepicker-toggle matSuffix [for]="picker"></sat-datepicker-toggle>
       </mat-form-field>
     </div>
-    <!-- [(ngModel)]="requestDetails.startDate"
-    [ngModelOptions]="{ standalone: true }" -->
+
     <button mat-raised-button type="submit" color="primary">Submit</button>
   </form>
 </div>
