@@ -113,7 +113,7 @@ export class RequesterComponent implements OnInit {
     });
   }
   employees: [] = [];
-  getEmpolyees() {
+  onGetEmpolyees() {
     this.openId.getEmpolyees().subscribe(res => {
       console.log(res);
       this.employees = res;
