@@ -15,10 +15,14 @@ h5 {
   margin-right: 25%;
 }
 input {
-  width: 100px;
+  width: 85%;
+}
+mat-form-field {
+  width: 30%;
 }
 .formshift {
-  margin-left: 41%;
+  margin-top: 2%;
+  margin-left: 40%;
 }
 button {
   margin-left: 45.5%;

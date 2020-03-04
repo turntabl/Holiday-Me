@@ -11,120 +11,25 @@
 </div>
 <div class="container-fluid">
   <form action="" (ngSubmit)="onSubmit()">
-    <!-- <div class="row formshift">
+    <div class="row formshift">
       <mat-form-field>
-        <mat-label>Start date</mat-label>
         <input
           (dateChange)="addEvent('start', $event)"
           matInput
-          [(ngModel)]="requestDetails.startDate"
-          [ngModelOptions]="{ standalone: true }"
+          [(ngModel)]="requestDetails"
           [matDatepickerFilter]="startFilter"
           [min]="startMinDate"
           [max]="startMaxDate"
-          [matDatepicker]="startpicker"
-        />
-        <mat-datepicker-toggle
-          matSuffix
-          [for]="startpicker"
-        ></mat-datepicker-toggle>
-        <mat-datepicker #startpicker startView="year"></mat-datepicker>
-      </mat-form-field>
-    </div> -->
-
-    <!-- <div class="row formshift">
-      <mat-form-field>
-        <mat-label>Report date</mat-label>
-        <input
-          (dateChange)="addEvent('report', $event)"
-          matInput
-          [(ngModel)]="requestDetails.reportDate"
-          [ngModelOptions]="{ standalone: true }"
-          [matDatepickerFilter]="reportFilter"
-          [min]="reportMinDate"
-          [max]="reportMaxDate"
-          [matDatepicker]="reportpicker"
-        />
-        <mat-datepicker-toggle
-          matSuffix
-          [for]="reportpicker"
-        ></mat-datepicker-toggle>
-        <mat-datepicker #reportpicker startView="year"></mat-datepicker>
-      </mat-form-field>
-    </div> -->
-
-    <div class="row formshift">
-      <mat-form-field style="width: 70%;">
-        <input
-          style="width: 60%;"
-          matInput
           placeholder="Choose a date"
-          [satDatepicker]="picker2"
+          [satDatepicker]="picker"
           formControlName="date"
         />
-
-        <sat-datepicker #picker2 [rangeMode]="true"> </sat-datepicker>
-        <sat-datepicker-toggle
-          matSuffix
-          [for]="picker2"
-        ></sat-datepicker-toggle>
+        <sat-datepicker #picker [rangeMode]="true"> </sat-datepicker>
+        <sat-datepicker-toggle matSuffix [for]="picker"></sat-datepicker-toggle>
       </mat-form-field>
-      <!-- </div> -->
-
-      <!-- <button
-      type="submit"
-      id="submit"
-      class="form-control mb-4 btn"
-      (ngModelChange)="onSubmitChecked($event)"
-      value="triggered"
-    >
-      Submit
-    </button> -->
-
-      <!-- <div style="padding:25px;">
-      <div class="form-group">
-        <div
-          class="input-group"
-          name="daterangeInput"
-          daterangepicker
-          [options]="options"
-          (selected)="selectedDate($event)"
-          (applyDaterangepicker)="applyDate($event)"
-        >
-          <span class="form-control uneditable-input">
-            {{ daterange.start | date: "M/dd/y" }} -
-          </span>
-          <span class="input-group-btn">
-            <a type="button" class="btn btn-default">
-              <i class="glyphicon glyphicon-calendar"></i>
-            </a>
-          </span>
-        </div>
-
-        <p>&nbsp;</p>
-
-        <div
-          class="input-group"
-          name="daterangeInput"
-          daterangepicker
-          [options]="options"
-          (selected)="selectedDate($event)"
-          (applyDaterangepicker)="applyDate($event)"
-        >
-          <span class="form-control uneditable-input">
-            - {{ daterange.end | date: "M/dd/y" }}
-          </span>
-          <span class="input-group-btn">
-            <a type="button" class="btn btn-default">
-              <i class="glyphicon glyphicon-calendar"></i>
-            </a>
-          </span>
-        </div>
-      </div> -->
-      <!-- </div> -->
-
-      <button mat-raised-button type="submit" color="primary">Submit</button>
-      <!-- </form> -->
     </div>
+    <!-- [(ngModel)]="requestDetails.startDate"
+    [ngModelOptions]="{ standalone: true }" -->
+    <button mat-raised-button type="submit" color="primary">Submit</button>
   </form>
 </div>
