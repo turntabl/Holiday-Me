@@ -33,6 +33,7 @@ export class RequesterComponent implements OnInit {
         .subscribe(response => {
           console.log("token", response);
           this.idToken = response.id_token;
+          console.log(this.idToken)
           this.openId.postValidateTokeId(this.idToken).subscribe(res => {
             console.log(res);
             localStorage.setItem("userEmail", res.decoded_token.email);
@@ -119,4 +120,6 @@ export class RequesterComponent implements OnInit {
       this.employees = res;
     });
   }
+
+
 }
