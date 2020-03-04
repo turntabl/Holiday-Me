@@ -24,14 +24,10 @@ export class FormComponent implements OnInit {
   requestDetails = new MakingRequest();
   userEmail = "";
   msgShow: boolean = false;
-  validSelection: boolean;
-  message: string;
+  validSelection: boolean = false;
+  message: string =
+    "Invalid selection! Please refresh the page and make a valid selection!";
 
-  public daterange: any = {
-    start: Date.now(),
-    end: Date.now(),
-    label: ""
-  };
   private picker: DaterangepickerComponent;
 
   public options: any = {
@@ -44,6 +40,8 @@ export class FormComponent implements OnInit {
     delete this.requestDetails["begin"];
     delete this.requestDetails["end"];
     console.log(this.requestDetails);
+    this.validSelection = true;
+    this.message = "Request sent successfully!";
   }
 
   myFilter = (d: Date | null): boolean => {
@@ -61,11 +59,6 @@ export class FormComponent implements OnInit {
     this.startMaxDate = new Date(currentYear, 11, 31);
     this.reportMinDate = new Date();
     this.reportMaxDate = new Date(currentYear, 11, 31);
-
-    this.daterangepickerOptions.settings = {
-      locale: { format: "YYYY-MM-DD" },
-      alwaysShowCalendars: false
-    };
   }
   inlineRangeChange($event) {
     this.inlineRange = $event;
@@ -73,8 +66,9 @@ export class FormComponent implements OnInit {
   ngOnInit() {}
 
   onSubmit() {
-    alert(
-      "Thanks for submitting! Data: " + JSON.stringify(this.requestDetails)
-    );
+    this.msgShow = true;
+    // alert(
+    //   "Thanks for submitting! Data: " + JSON.stringify(this.requestDetails)
+    // );
   }
 }
