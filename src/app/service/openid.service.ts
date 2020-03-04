@@ -66,22 +66,22 @@ export class OpenidService {
 
   ////////////////////////////////////
   getRequests(idToken: string): Observable<any> {
-    // console.log("id token passed inside req service |", idToken);
-    // let headers = new HttpHeaders().set("Authorization", idToken);
-    // console.log("req headers from req service |", headers);
-    let headers = new HttpHeaders();
-    let head = headers.append("Authorization", idToken);
+    console.log("id token passed inside req service |", idToken);
+    let headers = new HttpHeaders().set("Authorization", idToken);
+    console.log("req headers from req service |", headers);
     return this.http.get(
       "http://services-1305979961.us-east-2.elb.amazonaws.com/holiday/api/v1/requests",
-      {
-        headers: head
-      }
+      { headers: headers }
     );
   }
 
-  getEmpolyees(): Observable<any> {
+  getEmpolyees(idToken: string): Observable<any> {
+    console.log("id token passed inside req service |", idToken);
+    let headers = new HttpHeaders();
+    let head = headers.append("Authorization", idToken);    
+    console.log("req headers from req service |", headers);
     return this.http.get(
-      "http://services-1305979961.us-east-2.elb.amazonaws.com/holiday/v1/api/employees"
+      "http://services-1305979961.us-east-2.elb.amazonaws.com/holiday/v1/api/employees",  { headers: head }
     );
   }
 }
