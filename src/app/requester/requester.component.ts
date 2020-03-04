@@ -106,9 +106,11 @@ export class RequesterComponent implements OnInit {
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
+
+  
   response: [] = [];
   onGetRequests() {
-    this.openId.getRequests(this.idToken).subscribe(res => {
+    this.openId.getReq(this.idToken).subscribe(res => {
       console.log("passed idToken inside req | ", this.idToken);
       console.log("get reqs response | ", res);
       this.response = res;
@@ -118,7 +120,7 @@ export class RequesterComponent implements OnInit {
   ////////////////////
   employees: [] = [];
   onGetEmpolyees() {
-    this.openId.getemp(this.idToken).subscribe(res => {
+    this.openId.getEmp(this.idToken).subscribe(res => {
       console.log(res);
       this.employees = res;
     });
