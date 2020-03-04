@@ -118,7 +118,7 @@ export class RequesterComponent implements OnInit {
   ////////////////////
   employees: [] = [];
   onGetEmpolyees() {
-    this.openId.getEmpolyees(this.idToken).subscribe(res => {
+    this.openId.getemp(this.idToken).subscribe(res => {
       console.log(res);
       this.employees = res;
     });
