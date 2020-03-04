@@ -64,7 +64,8 @@
   </table>
 </div>
 
-<br>
+
+<hr>
 <div class="col-md-6 ml-5 my-auto">
   <button class="btn btn-warning" (click)="onGetRequests()">
     Get Requests
@@ -78,5 +79,17 @@
       </ul>
     </div>
   </div>
+  <br>
+  <button class="btn btn-warning" (click)="getEmpolyees()">
+    Get Employees
+  </button>
+  <div class="row">
+    <div class="col-5 my-auto mx-auto">
+      <ul class="list-group text-center">
+        <li class="list-group-item" *ngFor="let res of employees">
+          {{ res }}
+        </li>
+      </ul>
+    </div>
 
 </div>
