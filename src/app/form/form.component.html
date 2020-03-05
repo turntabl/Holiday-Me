@@ -26,7 +26,7 @@
           matSuffix
           [for]="startpicker"
         ></mat-datepicker-toggle>
-        <mat-datepicker #startpicker startView="year"></mat-datepicker>
+        <mat-datepicker #startpicker startView="month"></mat-datepicker>
       </mat-form-field>
     </div>
     <div class="row formshift">
@@ -44,7 +44,7 @@
           matSuffix
           [for]="reportpicker"
         ></mat-datepicker-toggle>
-        <mat-datepicker #reportpicker startView="year"></mat-datepicker>
+        <mat-datepicker #reportpicker startView="month"></mat-datepicker>
       </mat-form-field>
     </div>
     <div class="row formshift">
@@ -54,7 +54,7 @@
           matInput
           [(ngModel)]="requestDetails"
           [ngModelOptions]="{ standalone: true }"
-          [matDatepickerFilter]="myFilter"
+          [matDatepickerFilter]="startFilter"
           [min]="startMinDate"
           [max]="startMaxDate"
           placeholder="Choose a date"
