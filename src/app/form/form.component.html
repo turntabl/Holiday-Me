@@ -1,3 +1,11 @@
+<div class="text-center mes" *ngIf="msgShow == true">
+  <div class="alert alert-danger" *ngIf="validSelection == false" role="alert">
+    {{ message }}
+  </div>
+  <div class="alert alert-success" *ngIf="validSelection == true" role="alert">
+    {{ message }}
+  </div>
+</div>
 <div class="row heading">
   <h2>Book A Time Off</h2>
 </div>
@@ -22,7 +30,7 @@
       </mat-form-field>
     </div>
     <div class="row formshift">
-      <mat-form-field >
+      <mat-form-field>
         <mat-label>Report date</mat-label>
         <input
           (dateChange)="addEvent('report', $event)"
@@ -39,6 +47,23 @@
         <mat-datepicker #reportpicker startView="year"></mat-datepicker>
       </mat-form-field>
     </div>
-    <button mat-raised-button color="primary" type="submit" >Submit</button>
+    <div class="row formshift">
+      <mat-form-field>
+        <input
+          (dateChange)="selectedDate($event.value)"
+          matInput
+          [(ngModel)]="requestDetails"
+          [ngModelOptions]="{ standalone: true }"
+          [matDatepickerFilter]="myFilter"
+          [min]="startMinDate"
+          [max]="startMaxDate"
+          placeholder="Choose a date"
+          [satDatepicker]="picker"
+        />
+        <sat-datepicker #picker [rangeMode]="true"> </sat-datepicker>
+        <sat-datepicker-toggle matSuffix [for]="picker"></sat-datepicker-toggle>
+      </mat-form-field>
+    </div>
+    <button mat-raised-button color="primary" type="submit">Submit</button>
   </form>
 </div>
