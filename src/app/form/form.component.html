@@ -54,17 +54,14 @@
           matInput
           [(ngModel)]="requestDetails"
           [ngModelOptions]="{ standalone: true }"
-          [matDatepickerFilter]="startFilter"
+          [matDatepickerFilter]="myFilter"
           [min]="startMinDate"
           [max]="startMaxDate"
           placeholder="Choose a date"
-          [satDatepicker]="mypicker"
+          [satDatepicker]="picker"
         />
-        <sat-datepicker #mypicker [rangeMode]="true"> </sat-datepicker>
-        <sat-datepicker-toggle
-          matSuffix
-          [for]="mypicker"
-        ></sat-datepicker-toggle>
+        <sat-datepicker #picker [rangeMode]="true"> </sat-datepicker>
+        <sat-datepicker-toggle matSuffix [for]="picker"></sat-datepicker-toggle>
       </mat-form-field>
     </div>
     <button mat-raised-button color="primary" type="submit">Submit</button>

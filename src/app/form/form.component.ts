@@ -51,6 +51,12 @@ export class FormComponent implements OnInit {
     return day !== 0 && day !== 6;
   };
 
+  myFilter = (d: Date | null): boolean => {
+    const day = (d || new Date()).getDay();
+    // To prevent Saturday and Sunday from being selected.
+    return day !== 0 && day !== 6;
+  };
+
   dateSort = "";
   time_range = new FormGroup({});
 
