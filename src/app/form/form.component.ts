@@ -11,7 +11,8 @@ import { DaterangepickerComponent } from "ng2-daterangepicker";
 @Component({
   selector: "app-form",
   templateUrl: "./form.component.html",
-  styleUrls: ["./form.component.css"]
+  styleUrls: ["./form.component.css"],
+  providers: [OpenidService]
 })
 export class FormComponent implements OnInit {
   startMinDate: Date;

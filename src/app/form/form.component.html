@@ -14,42 +14,6 @@
   <form action="" [formGroup]="form" (ngSubmit)="onSubmit()">
     <div class="row formshift">
       <mat-form-field>
-        <mat-label>Start date</mat-label>
-        <input
-          (dateChange)="addEvent('start', $event)"
-          matInput
-          [matDatepickerFilter]="startFilter"
-          [min]="startMinDate"
-          [max]="startMaxDate"
-          [matDatepicker]="startpicker"
-        />
-        <mat-datepicker-toggle
-          matSuffix
-          [for]="startpicker"
-        ></mat-datepicker-toggle>
-        <mat-datepicker #startpicker startView="year"></mat-datepicker>
-      </mat-form-field>
-    </div>
-    <div class="row formshift">
-      <mat-form-field>
-        <mat-label>Report date</mat-label>
-        <input
-          (dateChange)="addEvent('report', $event)"
-          matInput
-          [matDatepickerFilter]="reportFilter"
-          [min]="reportMinDate"
-          [max]="reportMaxDate"
-          [matDatepicker]="reportpicker"
-        />
-        <mat-datepicker-toggle
-          matSuffix
-          [for]="reportpicker"
-        ></mat-datepicker-toggle>
-        <mat-datepicker #reportpicker startView="year"></mat-datepicker>
-      </mat-form-field>
-    </div>
-    <div class="row formshift">
-      <mat-form-field>
         <input
           (dateChange)="selectedDate($event.value)"
           matInput
