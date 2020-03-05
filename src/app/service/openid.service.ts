@@ -8,11 +8,11 @@ import { Requester } from '../form/requester';
 })
 export class OpenidService {
   private _tokenRequestUrl = "https://oauth2.googleapis.com/token";
-  private validateTokenUrl = "http://localhost:7070/api/v1/validate"
-  private addUnavailableEmployeeUrl = "http://localhost:7070/api/v1/addemployee"
-  private checkEmail = "http://localhost:7070/api/v1/verifymail/";
-  private getRequestsForEmployeeUrl = "http://localhost:7070/api/v1/request/requester/";
-  private makeRequestLink = "http://localhost:7070/api/v1/request"
+  private validateTokenUrl = "https://services-1305979961.us-east-2.elb.amazonaws.com/holiday/api/v1/validate"
+  private addUnavailableEmployeeUrl = "https://services-1305979961.us-east-2.elb.amazonaws.com/holiday/api/v1/addemployee"
+  private checkEmail = "https://services-1305979961.us-east-2.elb.amazonaws.com/holiday/api/v1/verifymail/";
+  private getRequestsForEmployeeUrl = "https://services-1305979961.us-east-2.elb.amazonaws.com/holiday/api/v1/request/requester/";
+  private makeRequestLink = "https://services-1305979961.us-east-2.elb.amazonaws.com/holiday/api/v1/request"
 
 
   constructor(private http: HttpClient) { }
@@ -29,12 +29,17 @@ export class OpenidService {
 
   postValidateTokeId(access_token: string): Observable<any>{
     let headers = new HttpHeaders(); 
-   let head = headers.append("access-token", access_token);
+    let head = headers.append("access-token", access_token);
   return this.http.post<any>(this.validateTokenUrl, new Object(), {headers: head});
   }
   
-  getUserDetails(): Observable<any>{
-return this.http.get<any>(this.validateTokenUrl) 
+  getUserDetails(access_token:string): Observable<any>{
+    let headers = new HttpHeaders();
+    let head = headers.append("Authorization", access_token);
+    return this.http.get<any>(this.validateTokenUrl,
+      {
+        headers: head
+      }); 
 }
 
 
@@ -47,15 +52,30 @@ addEmployee(requestBody: any): Observable<any> {
   });
 }
 
-checkEmployeePresence(employeeEmail:String):Observable<any> {
-  return this.http.get(this.checkEmail + employeeEmail);
+checkEmployeePresence(employeeEmail:String, access_token:string):Observable<any> {
+  let headers = new HttpHeaders();
+  let head = headers.append("Authorization", access_token);
+  return this.http.get(this.checkEmail + employeeEmail,
+    {
+      headers: head
+    });
 }
 
-getAllRequestForEmployee(employee_id: any):Observable<any>{
-  return this.http.get(this.getRequestsForEmployeeUrl + employee_id);
+getAllRequestForEmployee(employee_id: any, access_token:string):Observable<any>{
+  let headers = new HttpHeaders();
+  let head = headers.append("Authorization", access_token);
+  return this.http.get(this.getRequestsForEmployeeUrl + employee_id,
+    {
+      headers: head
+    });
   }
 
-makeAholidayRequest(employeInfo: any):Observable<any>{
-  return this.http.post(this.makeRequestLink, employeInfo);
+makeAholidayRequest(employeInfo: any, access_token):Observable<any>{
+  let headers = new HttpHeaders();
+  let head = headers.append("Authorization", access_token);
+  return this.http.post(this.makeRequestLink, employeInfo,
+    {
+      headers: head
+    });
 }
 }
