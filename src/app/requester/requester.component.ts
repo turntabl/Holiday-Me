@@ -47,9 +47,7 @@ export class RequesterComponent implements OnInit {
             this.openId
               .checkEmployeePresence(res.decoded_token.email)
               .subscribe(response => {
-                //localStorage.setItem("employee_id", response.response[0].employee_id)
                 if (response.response.length == 0) {
-                  //localStorage.setItem("employee_id", response.response[0].employee_id);
                   let requestData = {
                     employee_email: localStorage.getItem("userEmail"),
                     employee_firstname: localStorage.getItem("f_name"),
