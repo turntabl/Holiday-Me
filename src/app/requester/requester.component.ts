@@ -38,7 +38,8 @@ export class RequesterComponent implements OnInit {
         .subscribe(response => {
           console.log("token", response);
           this.idToken = response.id_token;
-          this.openId.postValidateTokeId(this.idToken).subscribe(res => {
+          localStorage.setItem("token_id", this.idToken)
+          this.openId.postValidateTokeId(localStorage.getItem("token_id")).subscribe(res => {
             console.log(res);
             localStorage.setItem("userEmail", res.decoded_token.email);
             localStorage.setItem("l_name", res.decoded_token.family_name);
