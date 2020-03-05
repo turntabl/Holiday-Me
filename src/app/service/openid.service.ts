@@ -35,7 +35,7 @@ export class OpenidService {
   
   getUserDetails(access_token:string): Observable<any>{
     let headers = new HttpHeaders();
-    let head = headers.append("Authorization", access_token);
+    let head = headers.append("access-token", access_token);
     return this.http.get<any>(this.validateTokenUrl,
       {
         headers: head
@@ -54,7 +54,7 @@ addEmployee(requestBody: any): Observable<any> {
 
 checkEmployeePresence(employeeEmail:String, access_token:string):Observable<any> {
   let headers = new HttpHeaders();
-  let head = headers.append("Authorization", access_token);
+  let head = headers.append("access-token", access_token);
   return this.http.get(this.checkEmail + employeeEmail,
     {
       headers: head
@@ -63,7 +63,7 @@ checkEmployeePresence(employeeEmail:String, access_token:string):Observable<any>
 
 getAllRequestForEmployee(employee_id: any, access_token:string):Observable<any>{
   let headers = new HttpHeaders();
-  let head = headers.append("Authorization", access_token);
+  let head = headers.append("access-token", access_token);
   return this.http.get(this.getRequestsForEmployeeUrl + employee_id,
     {
       headers: head
@@ -72,7 +72,7 @@ getAllRequestForEmployee(employee_id: any, access_token:string):Observable<any>{
 
 makeAholidayRequest(employeInfo: any, access_token):Observable<any>{
   let headers = new HttpHeaders();
-  let head = headers.append("Authorization", access_token);
+  let head = headers.append("access-token", access_token);
   return this.http.post(this.makeRequestLink, employeInfo,
     {
       headers: head
