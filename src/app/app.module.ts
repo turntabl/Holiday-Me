@@ -14,17 +14,19 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { MatDatepickerModule, MatNativeDateModule } from "@angular/material";
 import { MatButtonModule } from "@angular/material/button";
 // import { NgxAaaDatepickerModule } from 'ngx-aaa-datepicker';
-import { HttpClientModule, HttpClient } from '@angular/common/http'; 
+import { HttpClientModule, HttpClient } from "@angular/common/http";
 import { LoginComponent } from "./login/login.component";
-
+import { Daterangepicker } from "ng2-daterangepicker";
+import { SatDatepickerModule, SatNativeDateModule } from "saturn-datepicker";
 
 @NgModule({
   declarations: [
     AppComponent,
-     LoginComponent, 
-     RequesterComponent,
+    LoginComponent,
+    RequesterComponent,
     FormComponent,
-    ApproverComponent],
+    ApproverComponent
+  ],
 
   imports: [
     BrowserModule,
@@ -39,7 +41,10 @@ import { LoginComponent } from "./login/login.component";
     MatDatepickerModule,
     MatNativeDateModule,
     HttpClientModule,
-    MatButtonModule
+    MatButtonModule,
+    Daterangepicker,
+    SatDatepickerModule,
+    SatNativeDateModule
     // NgxAaaDatepickerModule
   ],
   providers: [],
