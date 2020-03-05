@@ -52,7 +52,7 @@ addEmployee(requestBody: any): Observable<any> {
   });
 }
 
-checkEmployeePresence(employeeEmail:String, access_token:string):Observable<any> {
+checkEmployeePresence(employeeEmail:String, access_token:any):Observable<any> {
   let headers = new HttpHeaders();
   let head = headers.append("access-token", access_token);
   return this.http.get(this.checkEmail + employeeEmail,
@@ -61,7 +61,7 @@ checkEmployeePresence(employeeEmail:String, access_token:string):Observable<any>
     });
 }
 
-getAllRequestForEmployee(employee_id: any, access_token:string):Observable<any>{
+getAllRequestForEmployee(employee_id: any, access_token:any):Observable<any>{
   let headers = new HttpHeaders();
   let head = headers.append("access-token", access_token);
   return this.http.get(this.getRequestsForEmployeeUrl + employee_id,
@@ -70,12 +70,12 @@ getAllRequestForEmployee(employee_id: any, access_token:string):Observable<any>{
     });
   }
 
-makeAholidayRequest(employeInfo: any, access_token):Observable<any>{
-  let headers = new HttpHeaders();
-  let head = headers.append("access-token", access_token);
-  return this.http.post(this.makeRequestLink, employeInfo,
-    {
-      headers: head
-    });
-}
+// makeAholidayRequest(employeInfo: any, access_token:any):Observable<any>{
+//   let headers = new HttpHeaders();
+//   let head = headers.append("access-token", access_token);
+//   return this.http.post(this.makeRequestLink, employeInfo,
+//     {
+//       headers: head
+//     });
+// }
 }
