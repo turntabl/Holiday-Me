@@ -52,30 +52,30 @@ addEmployee(requestBody: any): Observable<any> {
   });
 }
 
-checkEmployeePresence(employeeEmail:String, access_token:any):Observable<any> {
+checkEmployeePresence( access_token:any):Observable<any> {
   let headers = new HttpHeaders();
   let head = headers.append("access-token", access_token);
-  return this.http.get(this.checkEmail + employeeEmail,
+  return this.http.get(this.checkEmail ,
     {
       headers: head
     });
 }
 
-getAllRequestForEmployee(employee_id: any, access_token:any):Observable<any>{
+getAllRequestForEmployee( access_token:any):Observable<any>{
   let headers = new HttpHeaders();
   let head = headers.append("access-token", access_token);
-  return this.http.get(this.getRequestsForEmployeeUrl + employee_id,
+  return this.http.get(this.getRequestsForEmployeeUrl,
     {
       headers: head
     });
   }
 
-// makeAholidayRequest(employeInfo: any, access_token:any):Observable<any>{
-//   let headers = new HttpHeaders();
-//   let head = headers.append("access-token", access_token);
-//   return this.http.post(this.makeRequestLink, employeInfo,
-//     {
-//       headers: head
-//     });
-// }
+makeAholidayRequest( access_token:any):Observable<any>{
+  let headers = new HttpHeaders();
+  let head = headers.append("access-token", access_token);
+  return this.http.post(this.makeRequestLink,
+    {
+      headers: head
+    });
+}
 }
