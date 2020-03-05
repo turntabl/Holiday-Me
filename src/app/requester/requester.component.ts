@@ -9,13 +9,7 @@ export interface PeriodicElement {
   request_report_date: string;
   req_status: string;
 }
-let ELEMENT_DATA: PeriodicElement[] = [
-  {
-    req_status: "PENDING",
-    request_report_date: "aksdnlasd",
-    request_start_date: "asdasda"
-  }
-];
+
 @Component({
   selector: "app-requester",
   templateUrl: "./requester.component.html",
@@ -23,27 +17,27 @@ let ELEMENT_DATA: PeriodicElement[] = [
 })
 
 export class RequesterComponent implements OnInit {
-
-
   
   idToken;
   userName: String;
+  ELEMENT_DATA: PeriodicElement[];
+  
 
   constructor(
     private openId: OpenidService,
     private activatedRoute: ActivatedRoute
-  ) {}
+  ) {
+    
+  }
 
   ngOnInit() {
     this.activatedRoute.queryParamMap.subscribe(queryParam => {
-      // this.authenticationCode = queryParam.get("code");
       console.log("********** insidopenIde auth", queryParam.get("code"));
       this.openId
         .postAuthenticationCodForAccessAndIdToken(queryParam.get("code"))
         .subscribe(response => {
           console.log("token", response);
           this.idToken = response.id_token;
-          //this.val()
           this.openId.postValidateTokeId(this.idToken).subscribe(res => {
             console.log(res);
             localStorage.setItem("userEmail", res.decoded_token.email);
@@ -53,26 +47,31 @@ export class RequesterComponent implements OnInit {
             this.openId
               .checkEmployeePresence(res.decoded_token.email)
               .subscribe(response => {
+                //localStorage.setItem("employee_id", response.response[0].employee_id)
                 if (response.response.length == 0) {
+                  //localStorage.setItem("employee_id", response.response[0].employee_id);
                   let requestData = {
                     employee_email: localStorage.getItem("userEmail"),
                     employee_firstname: localStorage.getItem("f_name"),
-                    employee_lastname: localStorage.getItem("l_name")
+                    employee_lastname: localStorage.getItem("l_name"),
+                    
                   };
                   console.log("This user is not found..entring data");
 
                   this.openId.addEmployee(requestData).subscribe(response_ => {
                     console.log(response_);
                     this.userName = localStorage.getItem("f_name") + " " + localStorage.getItem("l_name")
+                    localStorage.setItem("employee_id", response_.employee_id)
+                    console.log(localStorage.getItem("employee_id"));
                   });
 
                 } else {
                   console.log("user found", response);
+                  localStorage.setItem("employee_id", response.response[0].employee_id)
                   this.userName = localStorage.getItem("f_name") + " " + localStorage.getItem("l_name")
-                  this.openId.getAllRequestForEmployee(response.response[0].employee_id).subscribe(data => {
-                    ELEMENT_DATA = data
-                    console.log("emploeyee_data",data);
-                    
+                  this.openId.getAllRequestForEmployee(response.response[0].employee_id).subscribe(
+                     data => {this.dataSource = new MatTableDataSource(data)
+                    console.log("emploeyee_data",data);                   
                   })
                 }
               });
@@ -82,12 +81,12 @@ export class RequesterComponent implements OnInit {
   }
 
   displayedColumns: string[] = ["request_start_date", "request_report_date", "req_status"];
-  dataSource = new MatTableDataSource(ELEMENT_DATA);
+  dataSource = new MatTableDataSource(this.ELEMENT_DATA);
 
-  btnColor(requestStatus: string) {
-    if (requestStatus === "Declined") {
+  btnColor(req_status: string) {
+    if (req_status === "DECLINED") {
       return "btn-danger";
-    } else if (requestStatus === "Approved") {
+    } else if (req_status === "APPROVED") {
       return "btn-success";
     } else {
       return "btn-lemon";
