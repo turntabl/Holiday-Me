@@ -91,6 +91,18 @@ export class FormComponent implements OnInit {
     return day !== 0 && day !== 6;
   };
 
+  startFilter = (d: Date | null): boolean => {
+    const day = (d || new Date()).getDay();
+    // To prevent Saturday and Sunday from being selected.
+    return day !== 0 && day !== 6;
+  };
+
+  reportFilter = (d: Date | null): boolean => {
+    const day = (d || new Date()).getDay();
+    // To prevent Saturday and Sunday from being selected.
+    return day !== 0 && day !== 6;
+  };
+
   inlineRangeChange($event) {
     this.inlineRange = $event;
   }
