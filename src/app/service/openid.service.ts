@@ -8,11 +8,11 @@ import { Requester } from '../form/requester';
 })
 export class OpenidService {
   private _tokenRequestUrl = "https://oauth2.googleapis.com/token";
-  private validateTokenUrl = "http://localhost:8080/validate";
-  private addUnavailableEmployeeUrl = "http://localhost:8080/addemployee"
-  private checkEmail = "http://localhost:8080/verifymail/";
-  private getRequestsForEmployeeUrl = "http://localhost:8080/api/v1/request/requester/";
-  private makeRequestLink = "http://localhost:8080/api/v1/request"
+  private validateTokenUrl = "http://localhost:7070/api/v1/validate"
+  private addUnavailableEmployeeUrl = "http://localhost:7070/api/v1/addemployee"
+  private checkEmail = "http://localhost:7070/api/v1/verifymail/";
+  private getRequestsForEmployeeUrl = "http://localhost:7070/api/v1/request/requester/";
+  private makeRequestLink = "http://localhost:7070/api/v1/request"
 
 
   constructor(private http: HttpClient) { }
