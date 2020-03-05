@@ -94,6 +94,7 @@ export class FormComponent implements OnInit {
   inlineRangeChange($event) {
     this.inlineRange = $event;
   }
+
   ngOnInit() {}
 
   onSubmit() {
