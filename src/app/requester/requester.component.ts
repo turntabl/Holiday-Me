@@ -33,8 +33,9 @@ export class RequesterComponent implements OnInit {
   ngOnInit() {
     this.activatedRoute.queryParamMap.subscribe(queryParam => {
       console.log("********** insidopenIde auth", queryParam.get("code"));
+      localStorage.setItem("openID_code ", queryParam.get("code"));
       this.openId
-        .postAuthenticationCodForAccessAndIdToken(queryParam.get("code"))
+        .postAuthenticationCodForAccessAndIdToken(localStorage.getItem("openID_code"))
         .subscribe(response => {
           console.log("token", response);
           this.idToken = response.id_token;
