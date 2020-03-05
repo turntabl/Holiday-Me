@@ -1,5 +1,4 @@
 <!-- Navbar -->
-
 <div class="row">
   <div class="col-6 but">
     <div class="bg-white p-4 rounded shadow-sm h-100 col">
@@ -34,13 +33,13 @@
     <!-- Start Date Column -->
     <ng-container matColumnDef="request_start_date">
       <th mat-header-cell *matHeaderCellDef>Start Date</th>
-      <td mat-cell *matCellDef="let element">{{ element.request_start_date }}</td>
+      <td mat-cell *matCellDef="let element">{{ element.request_start_date | date: 'EEEE, d MMMM y' }}</td>
     </ng-container>
 
     <!-- Reporting Date Column -->
     <ng-container matColumnDef="request_report_date">
       <th mat-header-cell *matHeaderCellDef>Report Date</th>
-      <td mat-cell *matCellDef="let element">{{ element.request_report_date }}</td>
+      <td mat-cell *matCellDef="let element">{{ element.request_report_date | date: 'EEEE, d MMMM y' }}</td>
     </ng-container>
 
     <!-- Status Column -->
@@ -48,7 +47,7 @@
       <th mat-header-cell *matHeaderCellDef>Status</th>
       <td mat-cell *matCellDef="let element">
         <button
-          [ngClass]="['btnStatus', 'btn', btnColor(element.requestStatus)]"
+          [ngClass]="['btnStatus', 'btn', btnColor(element.req_status)]"
           type="button"
         >
           {{ element.req_status }}

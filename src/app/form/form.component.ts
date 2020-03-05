@@ -2,7 +2,7 @@ import { Component, OnInit, AfterViewInit, ViewChild } from "@angular/core";
 import { FormGroup, FormControl, FormBuilder } from "@angular/forms";
 import { MatDatepickerInputEvent } from "@angular/material/datepicker";
 import { OpenidService } from "../service/openid.service";
-// import { Requester } from './../requester';
+import { Requester } from "./requester";
 
 import { MakingRequest } from "../makingRequest";
 import { DaterangepickerConfig } from "ng2-daterangepicker";
