@@ -73,6 +73,20 @@ export class FormComponent implements OnInit {
     }
   }
 
+  public options: any = {
+    locale: { format: "YYYY-MM-DD" },
+    alwaysShowCalendars: false
+  };
+  public selectedDate(value: any) {
+    this.requestDetails.startDate = value.begin;
+    this.requestDetails.reportDate = value.end;
+    delete this.requestDetails["begin"];
+    delete this.requestDetails["end"];
+    console.log(this.requestDetails);
+    this.validSelection = true;
+    this.message = "Request sent successfully!";
+  }
+
   myFilter = (d: Date | null): boolean => {
     const day = (d || new Date()).getDay();
     // To prevent Saturday and Sunday from being selected.
