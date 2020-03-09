@@ -33,7 +33,8 @@ export class RequesterComponent implements OnInit {
         .subscribe(response => {
           console.log("token", response);
           this.idToken = response.id_token;
-          this.openId.postValidateTokeId(this.idToken).subscribe(res => {
+          localStorage.setItem("idToken",this.idToken)
+          this.openId.postValidateTokeId(localStorage.getItem("idToken")).subscribe(res => {
             console.log(res);
             localStorage.setItem("userEmail", res.decoded_token.email);
             localStorage.setItem("l_name", res.decoded_token.family_name);
@@ -42,9 +43,7 @@ export class RequesterComponent implements OnInit {
             this.openId
               .checkEmployeePresence(res.decoded_token.email)
               .subscribe(response => {
-                //localStorage.setItem("employee_id", response.response[0].employee_id)
                 if (response.response.length == 0) {
-                  //localStorage.setItem("employee_id", response.response[0].employee_id);
                   let requestData = {
                     employee_email: localStorage.getItem("userEmail"),
                     employee_firstname: localStorage.getItem("f_name"),
